@@ -5,6 +5,16 @@
   
   <mapper namespace="com.nmc.mapper.memberMapper">
   
-  
+  <insert id="insertMember">
+  insert into member
+  (id,pw,name,tel,email,address)
+   values(#{id},#{pw},#{name},#{tel},#{email},#{address})
+   </insert>
+   
+   <select id="login" resultType="com.nmc.domain.MemberVO">
+   select*from member
+   where
+   id=#{id} and pw=#{pw}
+   </select>
   
   </mapper>

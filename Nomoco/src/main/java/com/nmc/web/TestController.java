@@ -1,10 +1,13 @@
 package com.nmc.web;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class TestController {
@@ -18,6 +21,7 @@ public class TestController {
 
 		return "/index";
 	}
+
 	
 	////////////////////////////////////templateView/////////////////////
 	// http://localhost:8088/index
@@ -51,5 +55,17 @@ public class TestController {
 		
 		return "templateView/shop-single";
 	}
+//	// http://localhost:8088/member/login
+//	@GetMapping("/member/login")
+//	public String loginGET() {
+//		
+//		return "member/loginForm";
+//	}
+//	// http://localhost:8088/member/insert
+//	@GetMapping("/member/insert")
+//	public String insertGET() {
+//		
+//		return "member/insertForm";
+//	}
 
 }
