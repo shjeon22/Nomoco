@@ -26,6 +26,15 @@ public class MemberServiceImpl implements MemberService {
 	    
 		log.info("DAO 처리완료 => 컨트롤러 이동");
 	}
+
+	@Override
+	public MemberVO loginCheck(MemberVO vo) throws Exception {
+		log.info("loginCheck(vo) 호출");
+		
+		MemberVO loginResultVO = dao.loginMember(vo);
+		log.info(loginResultVO+"");
+		return loginResultVO;// 서비스를 호출햇던 멤머 컨트롤러로 리턴됨
+	}
 	
 	
 }

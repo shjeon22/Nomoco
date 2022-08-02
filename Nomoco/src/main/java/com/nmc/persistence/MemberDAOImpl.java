@@ -32,4 +32,13 @@ public class MemberDAOImpl implements MemberDAO {
        System.out.println("DAO: 회원가입 완료!!");
 	}
 
+	@Override
+	public MemberVO loginMember(MemberVO vo) throws Exception {
+		log.info("loginMember() 동작 호출");
+		MemberVO resultVO = sqlSession.selectOne(NAMESPACE + ".login", vo);
+		log.info("로그인 체크완료" + resultVO);
+
+		return resultVO;
+	}
+
 }
