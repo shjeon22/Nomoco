@@ -1,5 +1,7 @@
 package com.nmc.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -33,8 +35,36 @@ public class MemberServiceImpl implements MemberService {
 		
 		MemberVO loginResultVO = dao.loginMember(vo);
 		log.info(loginResultVO+"");
+		
 		return loginResultVO;// 서비스를 호출햇던 멤머 컨트롤러로 리턴됨
 	}
+	
+
+	@Override
+	public MemberVO getMember(String id) throws Exception {
+        log.info("getMember(id) 호출");
+        MemberVO vo =dao.getMember(id);
+		return vo;
+	}
+
+	@Override
+	public Integer updateMember(MemberVO vo) throws Exception {
+       log.info("updateMember(vo) 호출");
+       
+       int resultCnt= dao.updateMember(vo);
+       log.info("resultCnt : "+resultCnt+" (SERVICE페이지)");
+		return resultCnt;
+	}
+
+	@Override
+	public void deleteMember(MemberVO vo) throws Exception {
+		
+		dao.deleteMember(vo);//dao에 있는 dvo 대신 서비스에있는 vo매개변수로 담아서 호출
+		
+		log.info("회원탈퇴완료 =>컨트롤러 이동");
+	}
+
+
 	
 	
 }

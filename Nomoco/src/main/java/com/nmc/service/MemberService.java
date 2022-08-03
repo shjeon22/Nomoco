@@ -1,5 +1,7 @@
 package com.nmc.service;
 
+import java.util.List;
+
 import com.nmc.domain.MemberVO;
 
 public interface MemberService {
@@ -10,4 +12,17 @@ public interface MemberService {
 
 	//로그인
 	public MemberVO loginCheck(MemberVO vo) throws Exception;
+
+	//회원정보 조회
+	public MemberVO getMember(String id) throws Exception;
+
+	//회원정보 수정
+	public Integer updateMember(MemberVO vo) throws Exception;
+
+	//회원정보 삭제
+	public void deleteMember(MemberVO vo) throws Exception;
+	
+	
+	
+	
 }

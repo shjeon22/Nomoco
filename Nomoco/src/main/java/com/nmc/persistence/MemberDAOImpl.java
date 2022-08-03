@@ -1,5 +1,7 @@
 package com.nmc.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -26,10 +28,10 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public void insertMember(MemberVO vo) throws Exception {
-       log.info("회원가입 실행");	
- 
-       sqlSession.insert(NAMESPACE+".insertMember", vo);
-       System.out.println("DAO: 회원가입 완료!!");
+		log.info("회원가입 실행");
+
+		sqlSession.insert(NAMESPACE + ".insertMember", vo);
+		System.out.println("DAO: 회원가입 완료!!");
 	}
 
 	@Override
@@ -40,5 +42,31 @@ public class MemberDAOImpl implements MemberDAO {
 
 		return resultVO;
 	}
+
+	@Override
+	public MemberVO getMember(String id) throws Exception {
+		log.info("getMember(id) 호출");
+
+		MemberVO vo = sqlSession.selectOne(NAMESPACE + ".getMember", id);
+
+		return vo;
+	}
+
+	@Override
+	public Integer updateMember(MemberVO vo) throws Exception {
+		log.info("수정된 정보를 받아서 sql 호출");
+		int resultCnt = sqlSession.update(NAMESPACE + ".update", vo);
+
+		return resultCnt;
+	}
+
+	@Override
+	public void deleteMember(MemberVO dvo) throws Exception {
+		log.info("deleteMember(dvo) 호출");
+		int check = sqlSession.delete(NAMESPACE + ".delete", dvo);
+		log.info("DAO : deleteMember() " + check + "명 탈퇴");
+	}
+
+
 
 }

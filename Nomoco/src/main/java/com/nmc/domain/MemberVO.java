@@ -7,15 +7,18 @@ public class MemberVO {
 	private String id;
 	private String pw;
 	private String name;
-	private int tel;
+	private Integer tel;
 	private String email;
 	private String address;
 	private Date regdate;
-
+	private Date updatedate;
+	
 	public MemberVO() {
 	}// 기본생성자 - 메서드 오버로딩을 하면 기본생성자 없어지기떄문(자동생성X) =>만들어줘야됨
 
-	public MemberVO(String id, String pw, String name, int tel, String email, String address, Date regdate) {
+	
+	public MemberVO(String id, String pw, String name, Integer tel, String email, String address, Date regdate,
+			Date updatedate) {
 		super();
 		this.id = id;
 		this.pw = pw;
@@ -24,9 +27,10 @@ public class MemberVO {
 		this.email = email;
 		this.address = address;
 		this.regdate = regdate;
+		this.updatedate = updatedate;
 	}
 
-	
+
 	public String getId() {
 		return id;
 	}
@@ -51,11 +55,11 @@ public class MemberVO {
 		this.name = name;
 	}
 
-	public int getTel() {
+	public Integer getTel() {
 		return tel;
 	}
 
-	public void setTel(int tel) {
+	public void setTel(Integer tel) {
 		this.tel = tel;
 	}
 
@@ -83,11 +87,19 @@ public class MemberVO {
 		this.regdate = regdate;
 	}
 
-	
+	public Date getUpdatedate() {
+		return updatedate;
+	}
+
+	public void setUpdatedate(Date updatedate) {
+		this.updatedate = updatedate;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVO [id=" + id + ", pw=" + pw + ", name=" + name + ", tel=" + tel + ", email=" + email
-				+ ", address=" + address + ", regdate=" + regdate + "]";
+				+ ", address=" + address + ", regdate=" + regdate + ", updatedate=" + updatedate + "]";
 	}
 
+	
 }

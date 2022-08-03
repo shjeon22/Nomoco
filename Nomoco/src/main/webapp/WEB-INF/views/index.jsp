@@ -112,12 +112,12 @@ https://templatemo.com/tm-559-zay-shop
  	  <c:choose>
    <c:when test = "${sessionScope.id eq 'admin'}">
            ${id }님 환영 합니다.<br>	 
-   			<input type="button" value="관리자 페이지" onclick=" location.href='/member/admin'; ">   
-           <input type="button" value="로그아웃" onclick=" location.href='/member/logout'; ">   
+   			<input type="button" value="관리자 페이지" onclick=" location.href='${pageContext.request.contextPath }/admin/memberList'; ">   
+           <input type="button" value="로그아웃" onclick=" location.href='${pageContext.request.contextPath }/member/logout'; ">   
    </c:when>
     <c:otherwise>
 	   	${id }님 환영 합니다.<br>	 
-  	  	<input type="button" value="로그아웃" onclick=" location.href='/member/logout'; ">   
+  	  	<input type="button" value="로그아웃" onclick=" location.href='${pageContext.request.contextPath }/member/logout'; ">   
     </c:otherwise>
      </c:choose>
     </c:otherwise>
