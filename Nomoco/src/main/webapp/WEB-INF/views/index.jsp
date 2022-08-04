@@ -117,7 +117,7 @@ https://templatemo.com/tm-559-zay-shop
    </c:when>
     <c:otherwise>
 	   	${id }님 환영 합니다.<br>	 
-  	  	<input type="button" value="로그아웃" onclick=" location.href='${pageContext.request.contextPath }/member/logout'; ">   
+  	  	<input type="button" value="로그아웃" class="btn btn-block btn-success" onclick=" location.href='${pageContext.request.contextPath }/member/logout'; ">   
     </c:otherwise>
      </c:choose>
     </c:otherwise>

@@ -23,7 +23,6 @@ public class MemberServiceImpl implements MemberService {
 	public void memberInsert(MemberVO vo)  throws Exception{
         log.info("memberInsert(vo) 서비스 호출");
         
-        // 순서 : 컨트롤러 -> 서비스 호출 -> DAO 호출 -> Mapper -> DB
 		dao.insertMember(vo);// 인터페이스안에 있는동작이지만 오버라이딩되어있는거 호출
 	    
 		log.info("DAO 처리완료 => 컨트롤러 이동");
@@ -62,6 +61,11 @@ public class MemberServiceImpl implements MemberService {
 		dao.deleteMember(vo);//dao에 있는 dvo 대신 서비스에있는 vo매개변수로 담아서 호출
 		
 		log.info("회원탈퇴완료 =>컨트롤러 이동");
+	}
+
+	@Override
+	public int idCnt(MemberVO vo) throws Exception {
+		return dao.idCnt(vo);
 	}
 
 

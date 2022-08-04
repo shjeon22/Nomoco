@@ -67,6 +67,11 @@ public class MemberDAOImpl implements MemberDAO {
 		log.info("DAO : deleteMember() " + check + "명 탈퇴");
 	}
 
+	@Override
+	public int idCnt(MemberVO vo) throws Exception {
+		return sqlSession.selectOne(NAMESPACE +".idCnt",vo);
+	}
+
 
 
 }

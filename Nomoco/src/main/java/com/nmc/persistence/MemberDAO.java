@@ -19,6 +19,9 @@ public interface MemberDAO {
 
 	//회원탈퇴
 	public void deleteMember(MemberVO dvo) throws Exception;
+	
+	//id확인
+	public int idCnt (MemberVO vo) throws Exception;
 
 
 }

@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
+<script src="http://wooshin.mireene.co.kr/g5/js/jquery-1.8.3.min.js"></script> <!--jquery library 추가 해줌으로 서 유효성 추가  -->
 <head>
 <meta charset="UTF-8">
 
@@ -127,6 +131,131 @@ hr {
 </head>
 <body>
 
+<script>
+
+$(document).ready(function(){
+	
+
+});
+function duplicate(){
+	var id=$("#id").val();
+
+	var submitObj = new Object();
+	submitObj.id=id;
+	
+	$.ajax({
+		url : "/member/idCnt",
+		type : "POST",
+		contentType : "application/json; charset-utf-8",
+		data : JSON.stringify(submitObj),
+		dataType : "json"
+		}).done(function(resMap) {
+		if (resMap.res == "ok") {
+		if (resMap.idCnt == 0) {
+		alert("사용할 수 있는 아이디입니다.");
+		$("#id_yn").val("Y");
+		} else {
+		alert("중복된 아이디 입니다.");
+		$("#id_yn").val("N");
+		}
+		}
+		
+		}).fail(function(e) {
+		alert("등록 시도에 실패하였습니다." + e);
+		}).always(function() {
+		pass = false;
+		});
+		
+		}
+
+function fnSubmit() {
+	 
+	var email_rule =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	// var tel_rule = /^\d{2,3}-\d{3,4}-\d{4}$/; 전화번호용
+	 
+	if ($("#name").val() == null || $("#name").val() == "") {
+	alert("이름을 입력해주세요.");
+	$("#name").focus();
+	 
+	return false;
+	}
+	 
+	if ($("#id").val() == null || $("#id").val() == "") {
+	alert("아이디를 입력해주세요.");
+	$("#memberId").focus();
+	 
+	return false;
+	}
+	 
+	if ($("#id_yn").val() != 'Y') {
+	alert("아이디 중복체크를 눌러주세요.");
+	$("#id_yn").focus();
+	 
+	return false;
+	}
+	 
+	 
+	if ($("#email").val() == null || $("#email").val() == "") {
+	alert("이메일을 입력해주세요.");
+	$("#email").focus();
+	 
+	return false;
+	}
+	 
+	 
+	if ($("#pw").val() == null || $("#pw").val() == "") {
+	alert("비밀번호를 입력해주세요.");
+	$("#pw").focus();
+	 
+	return false;
+	}
+	 
+	if ($("#pw2").val() == null || $("#pw2").val() == "") {
+	alert("비밀번호 확인을 입력해주세요.");
+	$("#pw2").focus();
+	 
+	return false;
+	}
+	 
+	if ($("#pw").val() != $("#pw2").val()) {
+	alert("비밀번호가 일치하지 않습니다.");
+	$("#pw2").focus();
+	 
+	return false;
+	}
+	 
+	if(!email_rule.test($("#email").val())){
+		alert("이메일을 형식에 맞게 입력해주세요. ex) 1234@naver.com");
+		$("#email").focus();
+		return false;
+		}
+	
+	if (confirm("회원가입하시겠습니까?")) {
+	 
+	$("#join").submit();
+	 
+	return false;
+	}
+	}
+	 
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<!--회원가입  -->
 
 
@@ -142,11 +271,19 @@ hr {
 				<p>Nomoco에 오신걸 환영합니다.</p>
 				<hr>
 				<label for="id"><b>아이디</b></label> <input type="text"
-					placeholder="아이디를 입력해주세요." name="id" required> <label
+					placeholder="아이디를 입력해주세요." name="id" required> 
+					<a href="#" class="btn btn-success btn-icon-split" style="text-align:center;" onclick="duplicate(); return false;">
+           			<span class="icon text-white-30">
+            		  <i class="fas fa-check"></i>
+            		   
+           			</span>
+           				 <span class="text">중복체크</span>
+        				</a>
+        				</div><label
 					for="pw"><b>비밀번호</b></label> <input type="password"
 					placeholder="비밀번호를 입력해주세요." name="pw" required> <label
-					for="pw-repeat"><b>비밀번호</b></label> <input type="password"
-					placeholder="비밀번호를 입력해주세요." name="pw-repeat" required> <label
+					for="pw2"><b>비밀번호</b></label> <input type="password"
+					placeholder="비밀번호를 입력해주세요." name="pw2" required> <label
 					for="name"><b>서명</b></label> <input type="text"
 					placeholder="이름을 입력해주세요." name="name" required> <label
 					for="tel"><b>전화번호</b></label> <input type="text"

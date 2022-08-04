@@ -1,28 +1,36 @@
 package com.nmc.web;
 
+import java.io.PrintWriter;
 import java.sql.Date;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nmc.domain.MemberVO;
 import com.nmc.service.MemberService;
 
 @Controller
 @RequestMapping("/member/*") // 공통주소를 설계 호출시(uri 중간에 위치)
-public class MemberController {
+public class MemberController { // 순서 : 컨트롤러 -> 서비스 호출 -> DAO 호출 -> Mapper -> DB
 
 	private static final Logger log = LoggerFactory.getLogger(MemberController.class);
 
@@ -30,7 +38,7 @@ public class MemberController {
 	private MemberService service;
 
 	// http://localhost:8088/index
-//	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	// @RequestMapping(value = "/index", method = RequestMethod.GET)
 	@GetMapping("/index")
 	public String indexGET() {
 
@@ -71,8 +79,8 @@ public class MemberController {
 		return "redirect:/member/login";
 
 	}
-    
-	//로그인
+
+	// 로그인
 	// http://localhost:8088/member/login
 	@GetMapping("/login")
 	public String loginGET() {
@@ -81,7 +89,6 @@ public class MemberController {
 
 	}
 
-	
 	@PostMapping("/login")
 	public String loginPOST(MemberVO vo, HttpSession session) throws Exception {
 		log.info("loginPOST() 호출");
@@ -96,8 +103,8 @@ public class MemberController {
 		session.setAttribute("id", resultVO.getId());
 		return "redirect:/index";
 	}
-	
-    //로그아웃
+
+	// 로그아웃
 	// http://localhost:8088/member/logout
 	@GetMapping("/logout")
 	public String logoutGET(HttpSession session) throws Exception {
@@ -106,8 +113,8 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/index";
 	}
-	
-	//마이페이지
+
+	// 마이페이지
 	// http://localhost:8088/member/mypage
 	@GetMapping("/mypage")
 	public String mypageGET(MemberVO vo, HttpSession session) throws Exception {
@@ -121,7 +128,7 @@ public class MemberController {
 
 		return "/member/mypage";
 	}
-	
+
 	// 회원정보 조회(개인 각각)
 	// http://localhost:8088/member/info
 	@GetMapping("/info")
@@ -138,7 +145,7 @@ public class MemberController {
 
 		model.addAttribute(vo);// db에서 받은 정보를 뷰페이지로 전달
 	}
-	
+
 	// 회원정보 수정
 	// http://localhost:8088/member/update
 	@GetMapping("/update")
@@ -164,37 +171,63 @@ public class MemberController {
 		if (result != 1) {
 			return "redirect:/member/update";
 		}
-		
+
 		log.info("회원수정 완료 -> 마이 페이지 이동");
 		rttr.addFlashAttribute("result", "UPOK");
 		return "redirect:/member/mypage";
 
 	}
-	
-	//회원탈퇴
+
+	// 회원탈퇴
 	// http://localhost:8088/member/delete
 	@GetMapping("/delete")
-	public String deleteGET(HttpSession session)throws Exception{
+	public String deleteGET(HttpSession session) throws Exception {
 		log.info("deleteGET()호출");
-		
-		String id= (String)session.getAttribute("id");
-		if(id==null) {
+
+		String id = (String) session.getAttribute("id");
+		if (id == null) {
 			return "redirect:/member/index";
 		}
 		return "/member/deleteForm";
-		}
-	
+	}
+
 	@PostMapping("/delete")
-	public String deletePOST(MemberVO vo, HttpSession session ,RedirectAttributes rttr)throws Exception{
+	public String deletePOST(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
 		log.info("deletePOST() 호출");
-		
-		log.info("삭제정보"+vo);
+
+		log.info("삭제정보" + vo);
 		service.deleteMember(vo);
-		
+
 		session.invalidate();
 		rttr.addFlashAttribute("result1", "DELOK");
 		return "redirect:/member/index";
 	}
 
 	
+	@PostMapping("/idCnt") //유효성검사
+	@ResponseBody
+	public String idCnt(@RequestBody String filterJSON, HttpServletResponse response, ModelMap model) throws Exception {
+		JSONObject resMap = new JSONObject();
+		//resMap이라는 JSONObject를 만듬 기본사용법과 특징은 Map와 유사하다 key,value형식으로 데이터를 관리.
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			MemberVO searchVO = mapper.readValue(filterJSON, new TypeReference<MemberVO>() {
+			});
+			int idCnt = service.idCnt(searchVO);
+			log.info("idCnt: " + idCnt);
+
+			resMap.put("res", "ok");
+			resMap.put("idCnt", idCnt);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			resMap.put("res", "error");
+		}
+		log.info("idCnt" + resMap);
+		response.setContentType("text/html: charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(resMap);
+
+		return null;
+	}
+
 }

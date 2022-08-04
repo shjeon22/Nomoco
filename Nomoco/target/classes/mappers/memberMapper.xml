@@ -7,8 +7,8 @@
   
   <insert id="insertMember">
   insert into member
-  (id,pw,name,tel,email,address)
-   values(#{id},#{pw},#{name},#{tel},#{email},#{address})
+  (id,id_yn,pw,name,tel,email,address)
+   values(#{id},#{id_yn},#{pw},#{name},#{tel},#{email},#{address})
    </insert>
    
    <select id="login" resultType="com.nmc.domain.MemberVO">
@@ -33,5 +33,31 @@
    delete from member where id=#{id} and pw=#{pw}
    </delete>
    
+   <select id="idCnt" parameterType="com.nmc.domain.MemberVO" resultType="integer">
+   <![CDATA[
+   select count(*) from member where id= #{id}
+   ]]>
+   </select>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   </mapper>

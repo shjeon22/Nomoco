@@ -22,7 +22,8 @@ public interface MemberService {
 	//회원정보 삭제
 	public void deleteMember(MemberVO vo) throws Exception;
 	
-	
+	//id체크
+	public int idCnt(MemberVO vo) throws Exception;
 	
 	
 }
