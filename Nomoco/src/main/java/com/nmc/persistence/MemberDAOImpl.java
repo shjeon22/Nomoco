@@ -1,7 +1,5 @@
 package com.nmc.persistence;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -68,9 +66,23 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public int idCnt(MemberVO vo) throws Exception {
-		return sqlSession.selectOne(NAMESPACE +".idCnt",vo);
+	public int idchk(String id) throws Exception {
+		int result = sqlSession.selectOne(NAMESPACE+".idChk", id);
+		return result;
 	}
+
+	@Override
+	public int telChk(String tel) throws Exception {
+		int result = sqlSession.selectOne(NAMESPACE+".telChk",tel);
+		return result;
+	}
+
+	@Override
+	public int emailChk(String email) throws Exception {
+		int result = sqlSession.selectOne(NAMESPACE+".emailChk", email);
+		return result;
+	}
+
 
 
 

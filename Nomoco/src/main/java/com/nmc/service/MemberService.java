@@ -1,6 +1,5 @@
 package com.nmc.service;
 
-import java.util.List;
 
 import com.nmc.domain.MemberVO;
 
@@ -22,8 +21,15 @@ public interface MemberService {
 	//회원정보 삭제
 	public void deleteMember(MemberVO vo) throws Exception;
 	
-	//id체크
-	public int idCnt(MemberVO vo) throws Exception;
+	//id중복체크
+	public int idChk(String id) throws Exception;
+	
+	//tel중복체크
+	public int telChk(String tel) throws Exception;
+	
+	//email중복체크
+	public int emailChk(String email) throws Exception;
+
 	
 	
 }

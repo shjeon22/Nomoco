@@ -1,7 +1,5 @@
 package com.nmc.service;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -64,9 +62,23 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int idCnt(MemberVO vo) throws Exception {
-		return dao.idCnt(vo);
+	public int idChk(String id) throws Exception {
+		int result =dao.idchk(id);
+		return result;
 	}
+
+	@Override
+	public int telChk(String tel) throws Exception {
+		int result=dao.telChk(tel);
+		return result;
+	}
+
+	@Override
+	public int emailChk(String email) throws Exception {
+		int result =dao.emailChk(email);
+		return result;
+	}
+
 
 
 	

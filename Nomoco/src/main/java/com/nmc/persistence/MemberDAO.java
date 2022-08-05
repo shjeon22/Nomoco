@@ -20,8 +20,14 @@ public interface MemberDAO {
 	//회원탈퇴
 	public void deleteMember(MemberVO dvo) throws Exception;
 	
-	//id확인
-	public int idCnt (MemberVO vo) throws Exception;
+	//id중복체크
+	public int idchk(String id) throws Exception;
+	
+	//tel중복체크
+	public int telChk(String tel) throws Exception;
+	
+	//email중복체크
+	public int emailChk(String email) throws Exception;
 
 
 }
