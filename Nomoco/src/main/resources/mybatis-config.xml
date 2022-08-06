@@ -4,8 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+	
 	<typeAliases>
-		<package name="com.bcc.domain" />
+	<typeAlias alias="MemberVO"  type="com.nmc.domain.MemberVO"/>
+	<typeAlias alias="BoardVO"  type="com.nmc.domain.BoardVO"/>
 	</typeAliases>
 	
 </configuration>
