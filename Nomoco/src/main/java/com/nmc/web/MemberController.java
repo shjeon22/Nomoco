@@ -134,7 +134,7 @@ public class MemberController { // 순서 : 컨트롤러 -> 서비스 호출 -> 
 		// id값 세션에서 가져옴
 		String id = (String) session.getAttribute("id");
 
-		// id에 해당하는 회원정보 모두 조회 ->서비스 동작 호출
+		// id에 해당하는 회원정보 모두 조회 ->서비스 동작 호출(위에 세션으로 id 가져와서 서비스 id호출0
 		MemberVO vo = service.getMember(id);
 
 		log.info(vo + "");// 가져온 회원정보 확인

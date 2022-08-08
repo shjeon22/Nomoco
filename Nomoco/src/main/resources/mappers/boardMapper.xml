@@ -5,20 +5,11 @@
 
 <mapper namespace="com.nmc.mapper.BoardMapper">
 
-	<insert id="insert" parameterType="BoardVO">
-		insert into board(title, content,writer)
-		values(#{title},#{content},#{writer})
-	</insert>
+		<insert id="createBoard">
+ 		insert into board (title,content,writer) 
+ 		values(#{title},#{content},#{writer}) 	
+ 	</insert>
 
-
-
-	<select id="select" parameterType="int" resultType="BoardVO">
-		select
-		bno,title,content,writer,view_cnt,comment_cnt,reg_date
-		from board
-		where
-		bno =#{bno}
-	</select>
 
 	
 

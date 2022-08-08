@@ -4,9 +4,7 @@ import com.nmc.domain.BoardVO;
 
 public interface BoardDAO {
 	
-	//글쓰기
-	int insert(BoardVO vo) throws Exception;
-	
-	
-	BoardVO select(Integer bno) throws Exception;
+
+	// 글쓰기 (create)
+	public void create(BoardVO vo);
 }

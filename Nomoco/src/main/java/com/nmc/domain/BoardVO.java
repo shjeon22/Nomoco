@@ -1,106 +1,69 @@
 package com.nmc.domain;
 
-import java.util.Date;
-import java.util.Objects;
-
-import org.apache.ibatis.type.Alias;
-
+import java.sql.Date;
 
 public class BoardVO {
 
-	private Integer bno;
+	private int bno;
 	private String title;
 	private String content;
 	private String writer;
-	private int view_cnt;
-	private int comment_cnt;// 댓글 개수
-	private Date reg_date;
-	
-	public BoardVO() {
-	}
+	private Date regdate;
+	private int viewcnt;
 
-	public BoardVO(String title, String content, String writer) {
+	public BoardVO() {}
+	public BoardVO(int bno, String title, String content, String writer, Date regdate, int viewcnt) {
 		super();
+		this.bno = bno;
 		this.title = title;
 		this.content = content;
 		this.writer = writer;
+		this.regdate = regdate;
+		this.viewcnt = viewcnt;
 	}
-
-	
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BoardVO BoardVO = (BoardVO) o;
-        return Objects.equals(bno, BoardVO.bno) && Objects.equals(title, BoardVO.title) && Objects.equals(content, BoardVO.content) && Objects.equals(writer, BoardVO.writer);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(bno, title, content, writer);
-    }
-    
-
-	public Integer getBno() {
+	public int getBno() {
 		return bno;
 	}
-
-	public void setBno(Integer bno) {
+	public void setBno(int bno) {
 		this.bno = bno;
 	}
-
 	public String getTitle() {
 		return title;
 	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
 	public String getContent() {
 		return content;
 	}
-
 	public void setContent(String content) {
 		this.content = content;
 	}
-
 	public String getWriter() {
 		return writer;
 	}
-
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-
-	public int getView_cnt() {
-		return view_cnt;
+	public Date getRegdate() {
+		return regdate;
 	}
-
-	public void setView_cnt(int view_cnt) {
-		this.view_cnt = view_cnt;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
-
-	public int getComment_cnt() {
-		return comment_cnt;
+	public int getViewcnt() {
+		return viewcnt;
 	}
-
-	public void setComment_cnt(int comment_cnt) {
-		this.comment_cnt = comment_cnt;
+	public void setViewcnt(int viewcnt) {
+		this.viewcnt = viewcnt;
 	}
-
-	public Date getReg_date() {
-		return reg_date;
-	}
-
-	public void setReg_date(Date reg_date) {
-		this.reg_date = reg_date;
-	}
-
+	
 	@Override
 	public String toString() {
-		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", view_cnt=" + view_cnt + ", comment_cnt=" + comment_cnt + ", reg_date=" + reg_date + "]";
+		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regdate="
+				+ regdate + ", viewcnt=" + viewcnt + "]";
 	}
+	
+	
 	
 }

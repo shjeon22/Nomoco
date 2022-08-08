@@ -12,29 +12,19 @@ import com.nmc.domain.BoardVO;
 @Repository
 public class BoardDAOImpl implements BoardDAO {
 
-private static final Logger log = LoggerFactory.getLogger(BoardDAOImpl.class);
+	private static final Logger log = LoggerFactory.getLogger(BoardDAOImpl.class);
+	@Inject
+	private SqlSession sqlSession;
 
-@Inject
-private SqlSession sqlSession;
+	private static final String NAMESPACE = "com.nmc.mapper.BoardMapper";
 
-private static final String NAMESPACE ="com.nmc.mapper.BoardMapper";
+	@Override
+	public void create(BoardVO vo) {
+		log.info(" 정보 전달받아서 mapper 호출 ");
+		// 정보 전달받아서 mapper를 거쳐서 DB에 저장
+		// sqlSession.insert("com.itwillbs.mapper.BoardMapper.createBoard", vo);
+		sqlSession.insert(NAMESPACE + ".createBoard", vo);
 
-
-
-@Override
-public int insert(BoardVO vo) throws Exception {
-	return sqlSession.selectOne(NAMESPACE+".insert", vo);
+		log.info(" mapper에서 처리 후 이동 ");
+	}
 }
-
-
-
-@Override
-public BoardVO select(Integer bno) throws Exception {
-
-	return sqlSession.selectOne(NAMESPACE+"select", bno);
-}
-
-
-
-
-} 
