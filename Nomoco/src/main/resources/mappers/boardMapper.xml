@@ -5,14 +5,32 @@
 
 <mapper namespace="com.nmc.mapper.BoardMapper">
 
+<select id="count" resultType="int">
+        SELECT count(*) FROM board
+    </select>
+
 	<insert id="createBoard">
 		insert into board (title,content,writer,ip)
 		values(#{title},#{content},#{writer},#{ip})
 	</insert>
 
 	<select id="listAll" resultType="BoardVO">
-		select*from board
+		  <![CDATA[
+ 		select * from board 
+ 		where bno > 0
+ 		order by bno desc, regdate desc 
+ 		limit 0,10
+ 		]]>
 	</select>
+
+
+
+	<select id="selectPage" parameterType="map" resultType="BoardVO">
+		SELECT *
+		FROM board ORDER BY regdate DESC, bno DESC
+		limit #{offset}, #{pageSize}
+	</select>
+
 
 	<update id="updateBoardCnt">
 		update board set viewcnt = viewcnt +1

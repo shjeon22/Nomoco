@@ -9,7 +9,7 @@
 <title>Zay Shop - Contact</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+ <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 <link rel="apple-touch-icon"
 	href="${pageContext.request.contextPath }/resources/img/apple-icon.png">
 <link rel="shortcut icon" type="image/x-icon"
@@ -161,7 +161,6 @@ https://templatemo.com/tm-559-zay-shop
 	<div class="container-fluid bg-light py-5">
 		<div class="col-md-6 m-auto text-center">
 			<h1 class="h1">게시판</h1>
-			<p>${ip}</p>
 		</div>
 	</div>
 
@@ -178,7 +177,7 @@ https://templatemo.com/tm-559-zay-shop
 					<th>작성일</th>
 					<th style="width: 40px">조회수</th>
 				</tr>
-				<c:forEach var="vo" items="${boardList }">
+				<c:forEach var="vo" items="${list}">
 					<tr>
 						<td>${vo.bno }</td>
 						<td><a href="/board/read?bno=${vo.bno }">${vo.title }</a></td>
@@ -195,7 +194,22 @@ https://templatemo.com/tm-559-zay-shop
 		</table>
 		<BR>
 		<div class="row">
-					<ul class="pagination pagination-lg justify-content-center">
+		
+		<div class="paging-container">
+      <div class="paging">
+     
+          <c:if test="${ph.showPrev}">
+            <a class="page" href="<c:url value="/board/list?page=${ph.beginPage-1}"/>">&lt;</a>
+          </c:if>
+          <c:forEach var="i" begin="${ph.beginPage}" end="${ph.endPage}">
+          </c:forEach>
+          <c:if test="${ph.showNext}">
+            <a class="page" href="<c:url value="/board/list?page=${ph.endPage+1}"/>">&gt;</a>
+          </c:if>
+      
+      </div>
+    </div>
+					<!-- <ul class="pagination pagination-lg justify-content-center">
 						<li class="page-item"><a
 							class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark"
 							href="#">◀ PREV</a></li>
@@ -217,7 +231,7 @@ https://templatemo.com/tm-559-zay-shop
 						<li class="page-item"><a
 							class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark"
 							href="#">NEXT ▶</a></li>
-					</ul>
+					</ul> -->
 				</div>
 			
 		

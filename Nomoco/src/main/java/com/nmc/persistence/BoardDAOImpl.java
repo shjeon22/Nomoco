@@ -1,6 +1,7 @@
 package com.nmc.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -20,6 +21,14 @@ public class BoardDAOImpl implements BoardDAO {
 
 	private static final String NAMESPACE = "com.nmc.mapper.BoardMapper";
 
+	
+	@Override
+	public int count() throws Exception {
+		return sqlSession.selectOne(NAMESPACE+".count");
+	}
+
+	
+	
 	@Override
 	public void create(BoardVO vo) throws Exception {
 		log.info(" 정보 전달받아서 mapper 호출 ");
@@ -36,6 +45,15 @@ public class BoardDAOImpl implements BoardDAO {
 		return boardList;
 	}
 
+	
+
+	@Override
+	public List<BoardVO> selectPage(Map<String, Integer> map) throws Exception {
+		  return sqlSession.selectList(NAMESPACE+".selectPage", map);
+	}
+
+	
+	
 	@Override
 	public void updateBoardCnt(Integer bno) throws Exception {
 		sqlSession.update(NAMESPACE + "updateBoard", bno);
@@ -58,5 +76,6 @@ public class BoardDAOImpl implements BoardDAO {
 		sqlSession.delete(NAMESPACE+".deleteBoard",bno);
 		
 	}
+
 
 }

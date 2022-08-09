@@ -1,6 +1,8 @@
 package com.nmc.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -11,13 +13,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nmc.domain.BoardVO;
+import com.nmc.domain.PageHandler;
 import com.nmc.service.BoardService;
 
 @Controller
@@ -29,21 +31,51 @@ public class BoardController {
 	@Inject
 	private BoardService service;
 
-//	// http://localhost:8088/board/list
-//	@GetMapping("/listAll")
-//	public String listGET(HttpServletRequest request) {
-//		if (!loginCheck(request))
-//			return "redirect:/member/login?toURL=" + request.getRequestURL(); // 로그인을 안했으면 로그인 화면으로 이동
-//
-//		return "/board/listAll"; // 로그인을 한 상태이면, 게시판 화면으로 이동
-//	}
-//
-//	private boolean loginCheck(HttpServletRequest request) {
-//		// 1. 세션을 얻어서(false는 session이 없어도 새로 생성하지 않는다. 반환값 null)
-//		HttpSession session = request.getSession(false);
-//		// 2. 세션에 id가 있는지 확인, 있으면 true를 반환
-//		return session != null && session.getAttribute("id") != null;
-//	}
+	// 게시물 목록(페이징)
+	// http://localhost:8088/board/list
+	@GetMapping("/list")
+	public String listGET(Integer page, Integer pageSize, Model model, HttpServletRequest request) throws Exception {
+		if (!loginCheck(request))
+			return "redirect:/member/login?toURL=" + request.getRequestURL(); // 로그인을 안했으면 로그인 화면으로 이동
+
+		if (page == null)//첫페이지가 null이면 1로 지정
+			page = 1;     
+		if (pageSize == null)//페이지사이즈 null로 받으면 10으로 기본 지정
+			pageSize = 10;
+
+		// List<BoardVO> boardList = service.getBoardListALL();
+		// model.addAttribute("boardList", boardList);  //밑에 list에 담은 service.getPage(map)로 불러온 값을 리스트로 대신출력
+
+		try {
+			int totalCnt = service.getCount();
+			PageHandler pageHandler = new PageHandler(totalCnt, page, pageSize);
+		
+			log.info("totalCnt(총 게시물 수:"+totalCnt); 
+			log.info("page(현재 페이지):"+page);
+			log.info("pageSize(한 페이지 게시물 수)"+pageSize);
+			
+			
+			Map map = new HashMap();
+			map.put("offset", (page - 1) * pageSize);
+			map.put("pageSize", pageSize);
+			      
+			List<BoardVO> list = service.getPage(map);
+			model.addAttribute("list", list);
+			model.addAttribute("ph", pageHandler);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+
+		return "/board/listAll"; // 로그인을 한 상태이면, 게시판 화면으로 이동
+	}
+
+	private boolean loginCheck(HttpServletRequest request) {
+		// 1. 세션을 얻어서(false는 session이 없어도 새로 생성하지 않는다. 반환값 null)
+		HttpSession session = request.getSession(false);
+		// 2. 세션에 id가 있는지 확인, 있으면 true를 반환
+		return session != null && session.getAttribute("id") != null;
+	}
 
 	// 글쓰기
 	// http://localhost:8088/board/register
@@ -55,7 +87,7 @@ public class BoardController {
 		String id = (String) session.getAttribute("id");
 		model.addAttribute("id", id);
 
-		// ip생성
+		// ip생성 IPv6( 0.0.0.0.0.1 ) => IPv4 ( 127.0.0.1 ) 형식으로 RUN-configurations-Arguments 에 -Djava.net.preferIPv4Stack=true 추가 
 		String ip = request.getHeader("X-Forwarded-For");
 
 		log.info(">>>> X-FORWARDED-FOR : " + ip);
@@ -102,22 +134,22 @@ public class BoardController {
 
 	}
 
-	// http://localhost:8088/board/listAll
-	// 글 리스트 - GET
-	@GetMapping("/listAll")
-	public void listAllGET(Model model, HttpSession session) throws Exception {
-		log.info("listAllGET 호출");
-
-		List<BoardVO> boardList = service.getBoardListALL();
-
-		// session.setAttribute("upFlag", "1");//0-false,1-true
-
-		model.addAttribute("boardList", boardList);
-
-	}
+	
+//	  // http://localhost:8088/board/listAll // 글 리스트 - GET ( 맨처음 단락 페이징 처리할떄 같이 출력으로 =>변경)
+//	  
+//	  @GetMapping("/listAll") public void listAllGET(Model model, HttpSession
+//	  session) throws Exception { log.info("listAllGET 호출");
+//	  
+//	  List<BoardVO> boardList = service.getBoardListALL();
+//	  
+//	  // session.setAttribute("upFlag", "1");//0-false,1-true
+//	  
+//	  model.addAttribute("boardList", boardList);
+//	  
+//	  }
+	
 
 	// 글본문보기 +조회수 증가
-	// http://localhost:8088/board/read?bno=1
 	// http://localhost:8088/board/read?bno=1
 	@GetMapping("/read")
 	public void readGET(@RequestParam("bno") int bno, Model model, HttpSession session) throws Exception {
@@ -177,22 +209,6 @@ public class BoardController {
 		rttr.addFlashAttribute("result", "DELOK");
 
 		return "redirect:/board/listAll";
-
-	}
-
-	// http://localhost:8088/board/listCri
-	// http://localhost:8088/board/listCri?perPageNum=5
-	// http://localhost:8088/board/listCri?page=10
-	// http://localhost:8088/board/listCri?perPageNum=5&page=5
-
-	// 페이징처리 - 게시판 리스트
-	@GetMapping("listCri")
-	public void listCriGET(Criteria cri, Model model, HttpSession session) throws Exception {
-		log.info("listCriGET() 페이징 처리 리스트");
-
-		// 서비스 - 페이징처리된 리스트 동작 호출
-		// 해당정보를 view 페이지로 전달
-		model.addAttribute("boardList", service.boardListCri(cri));
 
 	}
 
