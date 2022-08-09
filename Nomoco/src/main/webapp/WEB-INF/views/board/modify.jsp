@@ -130,44 +130,40 @@ https://templatemo.com/tm-559-zay-shop
     <!-- Start Content Page -->
     <div class="container-fluid bg-light py-5">
         <div class="col-md-6 m-auto text-center">
-            <h1 class="h1">게시물 작성</h1>
+            <h1 class="h1">게시물 수정</h1>
             <p>
-                내용을 작성해 주세요.
+                내용을 수정해 주세요.
             </p>
         </div>
     </div>
 
    
     <!-- Start Contact -->
-    <div class="container py-5">
-        <div class="row py-5">
-            <form class="col-md-9 m-auto" action="${pageContext.request.contextPath }/board/register" method="post" role="form">
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputname">작성자(ID)</label>
-                        <input type="text" class="form-control mt-1" id="writer" name="writer" value="${id}"  readonly="readonly">
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputname">아이피(IP)</label>
-                        <input type="text" class="form-control mt-1" id="ip" name="ip" value="${ip }" readonly="readonly">
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="inputsubject">제목</label>
-                    <input type="text" class="form-control mt-1" id="title" name="title" placeholder="제목을 입력해주세요." required="required">
-                </div>
-                <div class="mb-3">
-                    <label for="inputmessage">내용</label>
-                    <textarea class="form-control mt-1" id="content" name="content" placeholder="내용을 입력해주세요" rows="8" required="required"></textarea>
-                </div>
-                <div class="row">
-                    <div class="col text-end mt-2">
-                        <button type="submit" class="btn btn-success btn-lg px-3">글쓰기</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+    <form action="" method="post" role="form">
+					<div class="box-body">
+						<div class="form-group">
+							<label for="exampleInputEmail1">글 제목</label>
+							<input type="text" class="form-control" id="exampleInputEmail1"
+							    name ="title" value="${uvo.title }">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">글쓴이</label>
+							<input type="text" class="form-control" id="exampleInputPassword1"
+								name="writer" value="${uvo.writer }" readonly="readonly">
+						</div>
+						
+						<div class="form-group">
+							<label>글 내용</label>
+							<textarea class="form-control"  name="content" rows="3">${uvo.content }</textarea>
+						</div>
+						
+						
+					</div>
+
+					<div class="box-footer">
+						<button type="submit" class="btn btn-primary">글 수정하기</button>
+					</div>
+				</form>
     <!-- End Contact -->
 
 

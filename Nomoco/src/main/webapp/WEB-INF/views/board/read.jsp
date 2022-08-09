@@ -2,14 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 
 <head>
+<script src="http://wooshin.mireene.co.kr/g5/js/jquery-1.8.3.min.js"></script>
+
+
+
 <title>Zay Shop - Contact</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="apple-touch-icon"
 	href="${pageContext.request.contextPath }/resources/img/apple-icon.png">
 <link rel="shortcut icon" type="image/x-icon"
@@ -160,71 +164,111 @@ https://templatemo.com/tm-559-zay-shop
 	<!-- Start Content Page -->
 	<div class="container-fluid bg-light py-5">
 		<div class="col-md-6 m-auto text-center">
-			<h1 class="h1">게시판</h1>
-			<p>${ip}</p>
+			<h1 class="h1">게시판내용</h1>
 		</div>
 	</div>
 
 
-	<!-- Start Contact -->
-	<div class="container py-5">
-		<table class="table table-bordered">
-			<tbody>
-				<tr>
-					<th style="width: 10px">번호</th>
-					<th>제목</th>
-					<th>작성자(ID)</th>
-					<th>아이피(ip)</th>
-					<th>작성일</th>
-					<th style="width: 40px">조회수</th>
-				</tr>
-				<c:forEach var="vo" items="${boardList }">
-					<tr>
-						<td>${vo.bno }</td>
-						<td><a href="/board/read?bno=${vo.bno }">${vo.title }</a></td>
-						<td>${vo.writer }</td>
-						<td>${vo.ip }</td>
-						<td>
-						<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd HH:mm:ss" /><%-- <fmt:formatDate value="${vo.regdate }" type="both"/>  --%>
-						</td>
-						<td>${vo.viewcnt }</td>
-					</tr>
-				</c:forEach>
 
-			</tbody>
-		</table>
-		<BR>
-		<div class="row">
-					<ul class="pagination pagination-lg justify-content-center">
-						<li class="page-item"><a
-							class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark"
-							href="#">◀ PREV</a></li>
-						<li class="page-item"><a
-							class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark"
-							href="#">1</a></li>
-						<li class="page-item"><a
-							class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark"
-							href="#">2</a></li>
-						<li class="page-item"><a
-							class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-							href="#">3</a></li>
-						<li class="page-item"><a
-							class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-							href="#">4</a></li>
-						<li class="page-item"><a
-							class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-							href="#">5</a></li>
-						<li class="page-item"><a
-							class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark"
-							href="#">NEXT ▶</a></li>
-					</ul>
-				</div>
-			
-		
-	</div>
+	<!-- Start Contact -->
+	<form action="" role="form">
+						<input type="hidden" name="bno" value="${vo.bno }">	
+					</form>
+					
+					
+					
+					
+					
+								<div class="box-body">
+						<div class="form-group" style="border: 1">
+						
+							<label for="exampleInputEmail1">글 번호</label>
+							<input type="text" class="form-control" id="id"
+							    name ="bno" value="${vo.bno }" readonly="readonly">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">조회수</label>
+							<input type="text" class="form-control" id="exampleInputEmail1"
+							    name ="viewcnt" value="${vo.viewcnt }" readonly="readonly">
+						</div>
+					
+						<div class="form-group">
+							<label for="exampleInputEmail1">글 제목</label>
+							<input type="text" class="form-control" id="exampleInputEmail1"
+							    name ="title" value="${vo.title }" readonly="readonly">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">글쓴이(아이피)</label>
+							<input type="text" class="form-control" id="exampleInputPassword1"
+								name="writer" value="${vo.writer } (${vo.ip})" readonly="readonly">
+						</div>
+						
+						<div class="form-group">
+							<label>글 내용</label>
+							<textarea class="form-control"  name="content"
+							rows="3" readonly="readonly">${vo.content }</textarea>
+						</div>
+						
+						
+					</div>
+
+					<div class="box-footer">
+						<button type="submit" class="btn btn-primary">수정</button>
+						<button type="submit" class="btn btn-danger">삭제</button>
+						<button type="submit" class="btn bg-purple">목록</button>
+					</div>
+
+
+
+					
+					
+					
 	<!-- End Contact -->
 	
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		// 목록 버튼 클릭시
+		$('.bg-purple').click(function(){
+			alert(' 목록 버튼 클릭! ');
+			location.href='/board/listCri';
+		});
+		
+		// 폼태그(객체) 정보
+		var formObj = $('form[role="form"]');
+		//alert(formObj);
+		console.log(formObj);
+		
+		
+		// 수정 버튼 클릭시 => 폼태그(bno) 사용해서 페이지 이동
+		$('.btn-primary').click(function(){
+			alert(' 수정 버튼 클릭 ! ');
+			
+			// 폼태그 정보 => submit()
+			// 주소 (/board/modify)
+			formObj.attr("action","/board/modify");
+			// GET방식
+			//formObj.attr("method","get");
+			
+			formObj.submit();			
+		});
+		/////////////////////////////////////////////////////////////////////
+		
+		// 삭제 버튼 클릭
+		// /board/remove - POST 방식 
+		$(".btn-danger").click(function(){
+			alert(" 삭제 버튼 클릭 ");
+			
+			// 폼태그 action 정보 변경
+			formObj.attr("action","/board/remove");
+			// 폼태그 method 정보 변경
+			formObj.attr("method","POST");
+			
+			// 페이지 이동		
+			formObj.submit();
+		});
+	});// JQuery
+</script>
 
 
 
@@ -233,32 +277,6 @@ https://templatemo.com/tm-559-zay-shop
 
 
 
-
-
-
-
-
-	<script type="text/javascript">
-		//    alert('${result}');
-		//    alert('${boardList[0].title}');
-		//    $(document).ready(function(){
-		// 	   $('body').append('${boardList[0].title}');
-		//    });
-
-		var result = '${result}';
-
-		if (result == "REGOK") {
-			alert('글쓰기 완료!');
-		}
-
-		if (result == "MODOK") {
-			alert(" 글 수정 완료! ");
-		}
-
-		if (result == "DELOK") {
-			alert(" 글 삭제 완료! ");
-		}
-	</script>
 
 
 

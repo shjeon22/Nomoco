@@ -5,15 +5,34 @@
 
 <mapper namespace="com.nmc.mapper.BoardMapper">
 
-		<insert id="createBoard">
- 		insert into board (title,content,writer) 
- 		values(#{title},#{content},#{writer}) 	
- 	</insert>
+	<insert id="createBoard">
+		insert into board (title,content,writer,ip)
+		values(#{title},#{content},#{writer},#{ip})
+	</insert>
 
+	<select id="listAll" resultType="BoardVO">
+		select*from board
+	</select>
 
-	
+	<update id="updateBoardCnt">
+		update board set viewcnt = viewcnt +1
+		where bno=#{bno}
+	</update>
 
+	<select id="getBoard" resultType="BoardVO">
+		select*from board
+		where
+		bno=#{bno}
+	</select>
 
+	<update id="updateBoard">
+		update board set title=#{title},content=#{content}
+		where bno =#{bno}
+	</update>
 
+	<delete id="deleteBoard">
+		delete from board
+		where bno =#{bno}
+	</delete>
 
 </mapper>

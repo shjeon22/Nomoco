@@ -1,5 +1,7 @@
 package com.nmc.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,7 +21,7 @@ public class BoardDAOImpl implements BoardDAO {
 	private static final String NAMESPACE = "com.nmc.mapper.BoardMapper";
 
 	@Override
-	public void create(BoardVO vo) {
+	public void create(BoardVO vo) throws Exception {
 		log.info(" 정보 전달받아서 mapper 호출 ");
 		// 정보 전달받아서 mapper를 거쳐서 DB에 저장
 		// sqlSession.insert("com.itwillbs.mapper.BoardMapper.createBoard", vo);
@@ -27,4 +29,34 @@ public class BoardDAOImpl implements BoardDAO {
 
 		log.info(" mapper에서 처리 후 이동 ");
 	}
+
+	@Override
+	public List<BoardVO> listAll() throws Exception {
+		List<BoardVO> boardList = sqlSession.selectList(NAMESPACE + ".listAll");
+		return boardList;
+	}
+
+	@Override
+	public void updateBoardCnt(Integer bno) throws Exception {
+		sqlSession.update(NAMESPACE + "updateBoard", bno);
+	}
+
+	@Override
+	public BoardVO getBoard(Integer bno)  throws Exception{
+		BoardVO vo = sqlSession.selectOne(NAMESPACE + ".getBoard", bno);
+
+		return vo;
+	}
+
+	@Override
+	public void updateBoard(BoardVO vo) throws Exception {
+		sqlSession.update(NAMESPACE+".updateBoard",vo);
+	}
+
+	@Override
+	public void removeBoard(Integer bno) throws Exception {
+		sqlSession.delete(NAMESPACE+".deleteBoard",bno);
+		
+	}
+
 }
