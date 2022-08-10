@@ -9,7 +9,7 @@
 <title>Zay Shop - Contact</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
- <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<script src="http://wooshin.mireene.co.kr/g5/js/jquery-1.8.3.min.js"></script> 
 <link rel="apple-touch-icon"
 	href="${pageContext.request.contextPath }/resources/img/apple-icon.png">
 <link rel="shortcut icon" type="image/x-icon"
@@ -180,7 +180,7 @@ https://templatemo.com/tm-559-zay-shop
 				<c:forEach var="vo" items="${list}">
 					<tr>
 						<td>${vo.bno }</td>
-						<td><a href="/board/read?bno=${vo.bno }">${vo.title }</a></td>
+						<td><a href="<c:url value="/board/read?bno=${vo.bno}&page=${ph.page}&pageSize=${ph.pageSize}"/>">${vo.title }</a></td>
 						<td>${vo.writer }</td>
 						<td>${vo.ip }</td>
 						<td>
@@ -195,18 +195,22 @@ https://templatemo.com/tm-559-zay-shop
 		<BR>
 		<div class="row">
 		
-		<div class="paging-container">
+ <div class="paging-container">
       <div class="paging">
-     
+        <c:if test="${totalCnt==null || totalCnt==0}">
+          <div> 게시물이 없습니다. </div>
+        </c:if>
+        <c:if test="${totalCnt!=null && totalCnt!=0}">
           <c:if test="${ph.showPrev}">
             <a class="page" href="<c:url value="/board/list?page=${ph.beginPage-1}"/>">&lt;</a>
           </c:if>
           <c:forEach var="i" begin="${ph.beginPage}" end="${ph.endPage}">
+            <a class="page ${i==ph.page? "paging-active" : ""}" href="<c:url value="/board/list?page=${i}"/>">${i}</a>
           </c:forEach>
           <c:if test="${ph.showNext}">
             <a class="page" href="<c:url value="/board/list?page=${ph.endPage+1}"/>">&gt;</a>
           </c:if>
-      
+        </c:if>
       </div>
     </div>
 					<!-- <ul class="pagination pagination-lg justify-content-center">

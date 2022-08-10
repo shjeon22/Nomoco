@@ -5,9 +5,9 @@
 
 <mapper namespace="com.nmc.mapper.BoardMapper">
 
-<select id="count" resultType="int">
-        SELECT count(*) FROM board
-    </select>
+	<select id="count" resultType="int">
+		SELECT count(*) FROM board
+	</select>
 
 	<insert id="createBoard">
 		insert into board (title,content,writer,ip)
@@ -23,12 +23,18 @@
  		]]>
 	</select>
 
+	<sql id="shortcut">
+		select bno,writer,ip,title,content,regdate ,viewcnt
+		from
+		board
+	</sql>
 
 
 	<select id="selectPage" parameterType="map" resultType="BoardVO">
-		SELECT *
-		FROM board ORDER BY regdate DESC, bno DESC
-		limit #{offset}, #{pageSize}
+		<include refid="shortcut" />
+		order by bno desc, regdate desc
+		limit #{offset},#{pageSize};
+
 	</select>
 
 
@@ -38,7 +44,7 @@
 	</update>
 
 	<select id="getBoard" resultType="BoardVO">
-		select*from board
+		select *from board
 		where
 		bno=#{bno}
 	</select>

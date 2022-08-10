@@ -1,7 +1,6 @@
 package com.nmc.persistence;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.nmc.domain.BoardVO;
 
@@ -18,7 +17,7 @@ public interface BoardDAO {
 
 	// 글 페이징
 
-	List<BoardVO> selectPage(Map<String, Integer> map) throws Exception;
+	public List<BoardVO> selectPage(Map map) throws Exception;
 
 	// 조회수 1증가
 	public void updateBoardCnt(Integer bno) throws Exception;

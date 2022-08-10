@@ -19,7 +19,7 @@ public interface BoardService {
 
 	// 페이징
 	
-	List<BoardVO> getPage(Map<String, Integer> map) throws Exception;
+	public List<BoardVO> getPage(Map map) throws Exception;
 
 	// 조회수증가
 	public void updateBoardCount(Integer bno) throws Exception;

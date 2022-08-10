@@ -231,7 +231,7 @@ https://templatemo.com/tm-559-zay-shop
 		// 목록 버튼 클릭시
 		$('.bg-purple').click(function(){
 			alert(' 목록 버튼 클릭! ');
-			location.href='/board/listAll';
+			location.href='/board/list';
 		});
 		
 		// 폼태그(객체) 정보

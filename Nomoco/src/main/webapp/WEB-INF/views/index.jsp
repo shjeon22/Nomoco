@@ -92,7 +92,7 @@ https://templatemo.com/tm-559-zay-shop
 						</li>
 						<li class="nav-item"><a class="nav-link" href="about.html">About</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/board/listAll">게시판</a>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/board/list">게시판</a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/member/mypage">마이페이지</a>
 						</li>

@@ -43,11 +43,13 @@ public class BoardController {
 		if (pageSize == null)//페이지사이즈 null로 받으면 10으로 기본 지정
 			pageSize = 10;
 
-		// List<BoardVO> boardList = service.getBoardListALL();
+		// List<BoardVO> boardList = service.getBoardlist();
 		// model.addAttribute("boardList", boardList);  //밑에 list에 담은 service.getPage(map)로 불러온 값을 리스트로 대신출력
 
 		try {
+			
 			int totalCnt = service.getCount();
+			model.addAttribute("totalCnt",totalCnt);//총게시물 수(사용ok =>view출력 미정)
 			PageHandler pageHandler = new PageHandler(totalCnt, page, pageSize);
 		
 			log.info("totalCnt(총 게시물 수:"+totalCnt); 
@@ -56,8 +58,8 @@ public class BoardController {
 			
 			
 			Map map = new HashMap();
-			map.put("offset", (page - 1) * pageSize);
-			map.put("pageSize", pageSize);
+			map.put("offset", (page-1)*pageSize);
+            map.put("pageSize", pageSize);
 			      
 			List<BoardVO> list = service.getPage(map);
 			model.addAttribute("list", list);
@@ -67,7 +69,7 @@ public class BoardController {
 		}
 	
 
-		return "/board/listAll"; // 로그인을 한 상태이면, 게시판 화면으로 이동
+		return "/board/list"; // 로그인을 한 상태이면, 게시판 화면으로 이동
 	}
 
 	private boolean loginCheck(HttpServletRequest request) {
@@ -130,17 +132,17 @@ public class BoardController {
 
 		rttr.addFlashAttribute("result", "REGOK");
 
-		return "redirect:/board/listAll";
+		return "redirect:/board/list";
 
 	}
 
 	
-//	  // http://localhost:8088/board/listAll // 글 리스트 - GET ( 맨처음 단락 페이징 처리할떄 같이 출력으로 =>변경)
+//	  // http://localhost:8088/board/list // 글 리스트 - GET ( 맨처음 단락 페이징 처리할떄 같이 출력으로 =>변경)
 //	  
-//	  @GetMapping("/listAll") public void listAllGET(Model model, HttpSession
-//	  session) throws Exception { log.info("listAllGET 호출");
+//	  @GetMapping("/list") public void listGET(Model model, HttpSession
+//	  session) throws Exception { log.info("listGET 호출");
 //	  
-//	  List<BoardVO> boardList = service.getBoardListALL();
+//	  List<BoardVO> boardList = service.getBoardlist();
 //	  
 //	  // session.setAttribute("upFlag", "1");//0-false,1-true
 //	  
@@ -194,7 +196,7 @@ public class BoardController {
 
 		rttr.addFlashAttribute("result", "MODOK");
 
-		return "redirect:/board/listAll";
+		return "redirect:/board/list";
 	}
 
 	// http://localhost:8088/board/remove
@@ -208,7 +210,7 @@ public class BoardController {
 
 		rttr.addFlashAttribute("result", "DELOK");
 
-		return "redirect:/board/listAll";
+		return "redirect:/board/list";
 
 	}
 

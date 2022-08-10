@@ -48,7 +48,7 @@ public class BoardDAOImpl implements BoardDAO {
 	
 
 	@Override
-	public List<BoardVO> selectPage(Map<String, Integer> map) throws Exception {
+	public List<BoardVO> selectPage(Map map) throws Exception {
 		  return sqlSession.selectList(NAMESPACE+".selectPage", map);
 	}
 
