@@ -143,8 +143,6 @@ public class BoardController {
 //	  
 //	  List<BoardVO> boardList = service.getBoardlist();
 //	  
-//	  // session.setAttribute("upFlag", "1");//0-false,1-true
-//	  
 //	  model.addAttribute("boardList", boardList);
 //	  
 //	  }
@@ -152,22 +150,18 @@ public class BoardController {
 	// 글본문보기 +조회수 증가
 	// http://localhost:8088/board/read?bno=1
 	@GetMapping("/read")
-	public void readGET(@RequestParam("bno") int bno, Model model, HttpSession session) throws Exception {
+	public void readGET(Integer bno, Integer page, Integer pageSize, Model model) throws Exception {
 		// @RequestParam => request.getParameter("이름");
 		// -> 유사한 동작을 수행(문자열,숫자,날짜 자동형 변환)
 
 		log.info("readGET() 호출");
 		log.info("bno: " + bno);
 
-		// String upFlag =(String)session.getAttribute("upFlag");
-
-//		if(upFlag.equals("1")) {//글 조회수 1증가
-//			service.updateBoardCount(bno);
-//			session.setAttribute("upFlag", "0");
-//		}
+	
 //		//글 번호를 가지고 서비스 -글정보 가져오기 동작
 		BoardVO vo = service.readBoard(bno);
-
+        model.addAttribute("page", page);
+        model.addAttribute("pageSize", pageSize);
 		// 가져온데이터를 view에 출력
 		model.addAttribute("vo", vo);
 

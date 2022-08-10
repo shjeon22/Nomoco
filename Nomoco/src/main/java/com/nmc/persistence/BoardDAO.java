@@ -19,7 +19,7 @@ public interface BoardDAO {
 	public List<BoardVO> selectPage(Map<String, Integer> map) throws Exception;
 
 	// 조회수 1증가
-	public void updateBoardCnt(Integer bno) throws Exception;
+	public int updateBoardCnt(Integer bno) throws Exception;
 
 	// 글 상세보기
 	public BoardVO getBoard(Integer bno) throws Exception;

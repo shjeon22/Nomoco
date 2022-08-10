@@ -56,8 +56,8 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	
 	@Override
-	public void updateBoardCnt(Integer bno) throws Exception {
-		sqlSession.update(NAMESPACE + "updateBoard", bno);
+	public int updateBoardCnt(Integer bno) throws Exception {
+		return sqlSession.update(NAMESPACE + ".updateBoardCnt", bno);
 	}
 
 	@Override

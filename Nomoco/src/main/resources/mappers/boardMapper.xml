@@ -38,7 +38,7 @@
 	</select>
 
 
-	<update id="updateBoardCnt">
+	<update id="updateBoardCnt" parameterType="int">
 		update board set viewcnt = viewcnt +1
 		where bno=#{bno}
 	</update>

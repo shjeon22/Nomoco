@@ -22,9 +22,9 @@ public interface BoardService {
 	public List<BoardVO> getPage(Map<String, Integer> map) throws Exception;
 
 	// 조회수증가
-	public void updateBoardCount(Integer bno) throws Exception;
+	//public void updateBoardCount(Integer bno) throws Exception;
 
-	// 글상세보기
+	// 글상세보기// 조회수증가
 	public BoardVO readBoard(Integer bno) throws Exception;
 
 	// 글수정

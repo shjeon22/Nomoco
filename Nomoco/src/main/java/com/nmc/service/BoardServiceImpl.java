@@ -41,14 +41,12 @@ public class BoardServiceImpl implements BoardService {
 		return dao.selectPage(map);
 	}
 
-	@Override
-	public void updateBoardCount(Integer bno) throws Exception {
-		dao.updateBoardCnt(bno);
-	}
+	
 
 	@Override
 	public BoardVO readBoard(Integer bno) throws Exception {
 		BoardVO vo = dao.getBoard(bno);
+		dao.updateBoardCnt(bno);
 		return vo;
 	}
 
