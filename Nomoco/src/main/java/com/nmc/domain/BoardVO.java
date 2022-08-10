@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BoardVO {
 
-	private int bno;
+	private Integer bno;
 	private String title;
 	private String content;
 	private String writer;
@@ -14,7 +14,8 @@ public class BoardVO {
 
 	public BoardVO() {}
 
-	public BoardVO(int bno, String title, String content, String writer, String ip, Date regdate, int viewcnt) {
+	
+	public BoardVO(Integer bno, String title, String content, String writer, String ip, Date regdate, int viewcnt) {
 		super();
 		this.bno = bno;
 		this.title = title;
@@ -25,11 +26,12 @@ public class BoardVO {
 		this.viewcnt = viewcnt;
 	}
 
-	public int getBno() {
+
+	public Integer getBno() {
 		return bno;
 	}
 
-	public void setBno(int bno) {
+	public void setBno(Integer bno) {
 		this.bno = bno;
 	}
 
@@ -86,6 +88,8 @@ public class BoardVO {
 		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", ip=" + ip
 				+ ", regdate=" + regdate + ", viewcnt=" + viewcnt + "]";
 	}
+
+	
 
 	
 }

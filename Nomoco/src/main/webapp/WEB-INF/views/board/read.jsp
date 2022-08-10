@@ -171,7 +171,7 @@ https://templatemo.com/tm-559-zay-shop
 
 
 	<!-- Start Contact -->
-	<form action="" role="form">
+	<form action="" role="form" >
 						<input type="hidden" name="bno" value="${vo.bno }">	
 					</form>
 					
@@ -231,7 +231,7 @@ https://templatemo.com/tm-559-zay-shop
 		// 목록 버튼 클릭시
 		$('.bg-purple').click(function(){
 			alert(' 목록 버튼 클릭! ');
-			location.href='/board/list';
+			location.href="<c:url value='/board/list'/>?page=${page}&pageSize=${pageSize}";
 		});
 		
 		// 폼태그(객체) 정보
@@ -246,7 +246,7 @@ https://templatemo.com/tm-559-zay-shop
 			
 			// 폼태그 정보 => submit()
 			// 주소 (/board/modify)
-			formObj.attr("action","/board/modify");
+			formObj.attr("action","<c:url value='/board/modify?page=${page}&pageSize=${pageSize}'/>");
 			// GET방식
 			//formObj.attr("method","get");
 			
@@ -257,7 +257,7 @@ https://templatemo.com/tm-559-zay-shop
 		// 삭제 버튼 클릭
 		// /board/remove - POST 방식 
 		$(".btn-danger").click(function(){
-			alert(" 삭제 버튼 클릭 ");
+alert(" 삭제 버튼 클릭 ");
 			
 			// 폼태그 action 정보 변경
 			formObj.attr("action","/board/remove");

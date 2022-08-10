@@ -49,14 +49,14 @@
 		bno=#{bno}
 	</select>
 
-	<update id="updateBoard">
-		update board set title=#{title},content=#{content}
-		where bno =#{bno}
+	<update id="update" parameterType="BoardVO">
+		update board set
+		title=#{title} ,content=#{content}
+		where bno =#{bno} and writer =#{writer}
 	</update>
 
-	<delete id="deleteBoard">
-		delete from board
-		where bno =#{bno}
+	<delete id="delete" parameterType="map">
+		delete from board where bno = #{bno} and writer = #{writer}
 	</delete>
 
 </mapper>

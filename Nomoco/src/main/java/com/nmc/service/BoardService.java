@@ -19,7 +19,7 @@ public interface BoardService {
 
 	// 페이징
 	
-	public List<BoardVO> getPage(Map map) throws Exception;
+	public List<BoardVO> getPage(Map<String, Integer> map) throws Exception;
 
 	// 조회수증가
 	public void updateBoardCount(Integer bno) throws Exception;
@@ -28,9 +28,9 @@ public interface BoardService {
 	public BoardVO readBoard(Integer bno) throws Exception;
 
 	// 글수정
-	public void updateBoard(BoardVO vo) throws Exception;
+	public int modify(BoardVO vo) throws Exception;
 
 	// 글 삭제
-	public void deleteBoard(Integer bno) throws Exception;
+	public int remove(Integer bno, String writer) throws Exception;
 
 }

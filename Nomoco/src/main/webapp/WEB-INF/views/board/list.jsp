@@ -168,14 +168,14 @@ https://templatemo.com/tm-559-zay-shop
 	<!-- Start Contact -->
 	<div class="container py-5">
 		<table class="table table-bordered">
-			<tbody>
+			<tbody style="text-align : center;">
 				<tr>
-					<th style="width: 10px">번호</th>
-					<th>제목</th>
-					<th>작성자(ID)</th>
-					<th>아이피(ip)</th>
-					<th>작성일</th>
-					<th style="width: 40px">조회수</th>
+					<th style="width: 30px ">번호</th>
+					<th style="width: 60px">제목</th>
+					<th style="width: 80px">작성자(ID)</th>
+					<th style="width: 80px">아이피(ip)</th>
+					<th style="width: 140px">작성일</th>
+					<th style="width: 80px">조회수</th>
 				</tr>
 				<c:forEach var="vo" items="${list}">
 					<tr>
@@ -197,20 +197,21 @@ https://templatemo.com/tm-559-zay-shop
 		
  <div class="paging-container">
       <div class="paging">
+      <ul class="pagination pagination-lg justify-content-center">
         <c:if test="${totalCnt==null || totalCnt==0}">
           <div> 게시물이 없습니다. </div>
         </c:if>
         <c:if test="${totalCnt!=null && totalCnt!=0}">
           <c:if test="${ph.showPrev}">
-            <a class="page" href="<c:url value="/board/list?page=${ph.beginPage-1}"/>">&lt;</a>
+       <li class="page-item">     <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" style="" href="<c:url value="/board/list?page=${ph.beginPage-1}"/>">◀ PREV</a></li>
           </c:if>
           <c:forEach var="i" begin="${ph.beginPage}" end="${ph.endPage}">
-            <a class="page ${i==ph.page? "paging-active" : ""}" href="<c:url value="/board/list?page=${i}"/>">${i}</a>
+          <li class="page-item">  <a  class ="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="<c:url value="/board/list?page=${i}"/>">${i}</a></li>
           </c:forEach>
           <c:if test="${ph.showNext}">
-            <a class="page" href="<c:url value="/board/list?page=${ph.endPage+1}"/>">&gt;</a>
+          <li class="page-item">   <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="<c:url value="/board/list?page=${ph.endPage+1}"/>">NEXT ▶</a></li>
           </c:if>
-        </c:if>
+        </c:if></ul>
       </div>
     </div>
 					<!-- <ul class="pagination pagination-lg justify-content-center">
@@ -266,15 +267,21 @@ https://templatemo.com/tm-559-zay-shop
 		var result = '${result}';
 
 		if (result == "REGOK") {
-			alert('글쓰기 완료!');
+			alert('글이 정상적으로 작성 되었습니다.');
 		}
 
 		if (result == "MODOK") {
-			alert(" 글 수정 완료! ");
+			alert(" 수정이 완료되었습니다.");
+		}
+		if (result == "MODX") {
+			alert(" 작성자만 수정할 수 있습니다. ");
 		}
 
 		if (result == "DELOK") {
-			alert(" 글 삭제 완료! ");
+			alert(" 글이 정상적으로 제거 되었습니다. ");
+		}
+		if (result == "DELX") {
+			alert(" 작성자 이외에 삭제할 수 없습니다. ");
 		}
 	</script>
 

@@ -37,7 +37,7 @@ public class BoardServiceImpl implements BoardService {
 
 	
 	@Override
-	public List<BoardVO> getPage(Map map) throws Exception {
+	public List<BoardVO> getPage(Map<String, Integer> map) throws Exception {
 		return dao.selectPage(map);
 	}
 
@@ -53,13 +53,13 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void updateBoard(BoardVO vo) throws Exception {
-		dao.updateBoard(vo);
+	public int modify(BoardVO vo) throws Exception {
+		return dao.update(vo);
 	}
 
 	@Override
-	public void deleteBoard(Integer bno) throws Exception {
-		dao.removeBoard(bno);
+	  public int remove(Integer bno, String writer) throws Exception {
+        return dao.delete(bno, writer);
 	}
 
 

@@ -1,5 +1,6 @@
 package com.nmc.persistence;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,7 +49,7 @@ public class BoardDAOImpl implements BoardDAO {
 	
 
 	@Override
-	public List<BoardVO> selectPage(Map map) throws Exception {
+	public List<BoardVO> selectPage(Map<String, Integer> map) throws Exception {
 		  return sqlSession.selectList(NAMESPACE+".selectPage", map);
 	}
 
@@ -67,13 +68,16 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public void updateBoard(BoardVO vo) throws Exception {
-		sqlSession.update(NAMESPACE+".updateBoard",vo);
+	public int update(BoardVO vo) throws Exception {
+		return sqlSession.update(NAMESPACE+".update",vo);
 	}
 
 	@Override
-	public void removeBoard(Integer bno) throws Exception {
-		sqlSession.delete(NAMESPACE+".deleteBoard",bno);
+	public int delete(Integer bno, String writer)  throws Exception {
+		  Map map = new HashMap();
+	        map.put("bno", bno);
+	        map.put("writer", writer);
+	        return sqlSession.delete(NAMESPACE+".delete", map);
 		
 	}
 
