@@ -24,7 +24,7 @@
 	</select>
 
 	<sql id="shortcut">
-		select bno,writer,ip,title,content,regdate ,viewcnt
+		select bno,writer,ip,title,content,comment_cnt,regdate ,viewcnt
 		from
 		board
 	</sql>
@@ -58,5 +58,12 @@
 	<delete id="delete" parameterType="map">
 		delete from board where bno = #{bno} and writer = #{writer}
 	</delete>
+	
+	  <update id="updateCommentCnt" parameterType="map">
+        update board
+        set comment_cnt = comment_cnt + #{cnt}
+        where bno = #{bno}
+    </update>
+	
 
 </mapper>

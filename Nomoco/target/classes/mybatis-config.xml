@@ -8,6 +8,7 @@
 	<typeAliases>
 	<typeAlias alias="MemberVO"  type="com.nmc.domain.MemberVO"/>
 	<typeAlias alias="BoardVO"  type="com.nmc.domain.BoardVO"/>
+	<typeAlias alias="CommentVO"  type="com.nmc.domain.CommentVO"/>
 	</typeAliases>
 	
 </configuration>

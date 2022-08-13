@@ -22,14 +22,11 @@ public class BoardDAOImpl implements BoardDAO {
 
 	private static final String NAMESPACE = "com.nmc.mapper.BoardMapper";
 
-	
 	@Override
 	public int count() throws Exception {
-		return sqlSession.selectOne(NAMESPACE+".count");
+		return sqlSession.selectOne(NAMESPACE + ".count");
 	}
 
-	
-	
 	@Override
 	public void create(BoardVO vo) throws Exception {
 		log.info(" 정보 전달받아서 mapper 호출 ");
@@ -46,22 +43,18 @@ public class BoardDAOImpl implements BoardDAO {
 		return boardList;
 	}
 
-	
-
 	@Override
 	public List<BoardVO> selectPage(Map<String, Integer> map) throws Exception {
-		  return sqlSession.selectList(NAMESPACE+".selectPage", map);
+		return sqlSession.selectList(NAMESPACE + ".selectPage", map);
 	}
 
-	
-	
 	@Override
 	public int updateBoardCnt(Integer bno) throws Exception {
 		return sqlSession.update(NAMESPACE + ".updateBoardCnt", bno);
 	}
 
 	@Override
-	public BoardVO getBoard(Integer bno)  throws Exception{
+	public BoardVO getBoard(Integer bno) throws Exception {
 		BoardVO vo = sqlSession.selectOne(NAMESPACE + ".getBoard", bno);
 
 		return vo;
@@ -69,17 +62,24 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public int update(BoardVO vo) throws Exception {
-		return sqlSession.update(NAMESPACE+".update",vo);
+		return sqlSession.update(NAMESPACE + ".update", vo);
 	}
 
 	@Override
-	public int delete(Integer bno, String writer)  throws Exception {
-		  Map map = new HashMap();
-	        map.put("bno", bno);
-	        map.put("writer", writer);
-	        return sqlSession.delete(NAMESPACE+".delete", map);
-		
+	public int delete(Integer bno, String writer) throws Exception {
+		Map map = new HashMap();
+		map.put("bno", bno);
+		map.put("writer", writer);
+		return sqlSession.delete(NAMESPACE + ".delete", map);
+
 	}
 
+	@Override
+	public int updateCommentCnt(Integer bno, int cnt) throws Exception {
+		Map map = new HashMap();
+		map.put("cnt", cnt);// 증가할떄 1 감소할떄 -1
+		map.put("bno", bno);
+		return sqlSession.update(NAMESPACE + ".updateCommentCnt", map);
+	}
 
 }

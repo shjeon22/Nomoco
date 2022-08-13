@@ -188,7 +188,7 @@ public class BoardController {
 		vo.setWriter(writer);
 		
 		if(service.modify(vo)!=1) {
-		//	throw new Exception("board remove faild!");//예외던지기
+		//	throw new Exception("board remove failed!");//예외던지기
 			rttr.addFlashAttribute("result", "MODX");
 		}else {
 			rttr.addFlashAttribute("result", "MODOK");
@@ -212,7 +212,7 @@ public class BoardController {
 		// bno와 writer를 사용하여 글삭제
 		int delck = service.remove(bno, writer);
 		if (delck != 1) {
-//			throw new Exception("board remove faild!"); //예외던지기
+//			throw new Exception("board remove failed!"); //예외던지기
 			rttr.addFlashAttribute("result", "DELX");
 		} else {
 			rttr.addFlashAttribute("result", "DELOK");
