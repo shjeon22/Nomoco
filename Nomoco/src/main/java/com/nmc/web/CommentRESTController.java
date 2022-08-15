@@ -23,25 +23,27 @@ import com.nmc.service.CommentService;
 //@Controller
 //@ResponseBody -JSON으로 온걸 Java객체로 변환해서 넣어줌
 @RestController
+@RequestMapping("/board/*")
 public class CommentRESTController {
 
 	private static final Logger log = LoggerFactory.getLogger(CommentRESTController.class);
 
 	@Inject
-	private CommentService service;
+ CommentService service;
+
 
 	
 	// 댓글 등록
 	// /comments?bno=100 POST
-	// http://localhost:8088/comments
+	// http://localhost:8088/board/comments?bno=1085
 	@PostMapping("/comments")
 	public ResponseEntity<String> writePOST(@RequestBody CommentVO vo, Integer bno, HttpSession session) {
 
-		String commenter =(String)session.getAttribute("id");
+		//String commenter =(String)session.getAttribute("id");
 		
-//		String commenter = "test";
-//		vo.setCommenter(commenter);
-//		vo.setBno(bno);
+		String commenter = "asdf";
+		vo.setCommenter(commenter);
+		vo.setBno(bno);
 		log.info("vo =" + vo);
 
 		try {
@@ -66,6 +68,7 @@ public class CommentRESTController {
 
 		try {
 			list = service.getList(bno);
+			System.out.println("list@@@"+list);
 
 			return new ResponseEntity<List<CommentVO>>(list, HttpStatus.OK);// 200
 
