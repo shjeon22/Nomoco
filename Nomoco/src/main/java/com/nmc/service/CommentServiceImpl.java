@@ -20,15 +20,15 @@ public class CommentServiceImpl implements CommentService {
 
 	private static final Logger log = LoggerFactory.getLogger(CommentServiceImpl.class);
 	
-//  @Inject
+  @Inject
 	private CommentDAO cdao;
-//	@Inject
+	@Inject
 	private BoardDAO bdao;
 	
-	public CommentServiceImpl(CommentDAO cdao, BoardDAO bdao) {// 생성자 1개밖에없을때  주입가능
-		this.cdao =cdao;                                     //실수로 한개만 주입받고 @inject 안적는경우
-		this.bdao =bdao;                                     //주입해야할 객체 없으면 빨간줄떠서 쉽게 알수있음
-	}
+	//public CommentServiceImpl(CommentDAO cdao, BoardDAO bdao) {// 생성자 1개밖에없을때  주입가능
+		//this.cdao =cdao;                                     //실수로 한개만 주입받고 @inject 안적는경우
+	//	this.bdao =bdao;                                     //주입해야할 객체 없으면 빨간줄떠서 쉽게 알수있음
+	//}
 	
 	@Override
 	public int getCount(Integer bno) throws Exception{
@@ -60,6 +60,7 @@ public class CommentServiceImpl implements CommentService {
 	}
 	
 	@Override
+	
 	@Transactional(rollbackFor = Exception.class)
 	public int remove(Integer cno, Integer bno, String commenter) throws Exception{
 		int rowCnt =bdao.updateCommentCnt(bno, -1);

@@ -13,5 +13,6 @@ public class SimpleRESTController {
     public String ajax() {
         return "/board/test";
     }
-
+    
+  
 }

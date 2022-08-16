@@ -25,5 +25,5 @@ public interface CommentDAO {
 	public int delete(Integer cno, String commenter) throws Exception;
 	
 	//삭제All
-	public int deleteAll(Integer bno) throws Exception;
+	public int deleteAll(Integer bno);
 }

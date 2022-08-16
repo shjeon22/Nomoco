@@ -21,6 +21,7 @@ public interface CommentService {
 	//수정
 	public int modify(CommentVO vo) throws Exception;
 
+	//삭제
 	public int remove(Integer cno, Integer bno, String commenter) throws Exception;
 
 	

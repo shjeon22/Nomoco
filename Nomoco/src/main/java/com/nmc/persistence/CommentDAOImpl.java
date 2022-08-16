@@ -48,16 +48,17 @@ public class CommentDAOImpl implements CommentDAO {
 	@Override
 	public int delete(Integer cno, String commenter) throws Exception {
 		
-		Map map = new HashMap();
+		@SuppressWarnings("rawtypes")
+		Map<String, Comparable> map = new HashMap<String, Comparable>();
 		map.put("cno", cno);
 		map.put("commenter", commenter);
 		
-		return sqlSession.delete(NAMESPACE+"delete",map);
+		return sqlSession.delete(NAMESPACE+".delete",map);
 	}
 
 	@Override
-	public int deleteAll(Integer bno) throws Exception {
-		return sqlSession.delete(NAMESPACE+"deleteAll",bno);
+	public int deleteAll(Integer bno){
+		return sqlSession.delete(NAMESPACE+".deleteAll",bno);
 	}
 	
 	}
