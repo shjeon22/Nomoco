@@ -18,11 +18,10 @@
 
 	<select id="selectAll" parameterType="int"
 		resultType="CommentVO">
-		SELECT cno, bno, pcno, comment, commenter, reg_date,
-		up_date
+		SELECT cno, bno, ifnull(pcno,cno) as pcno, comment, commenter, reg_date, up_date
 		FROM comment
 		WHERE bno = #{bno}
-		ORDER BY reg_date ASC, cno ASC
+		ORDER BY pcno ASC, cno ASC
 	</select>
 
 	<select id="select" parameterType="int" resultType="CommentVO">

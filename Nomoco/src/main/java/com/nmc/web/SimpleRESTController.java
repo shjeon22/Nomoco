@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/board/*")
 public class SimpleRESTController {
 	
-	// http://localhost:8088/board/test
-    @GetMapping("/test")
+	// http://localhost:8088/board/commentest
+    @GetMapping("/commentest")
     public String ajax() {
-        return "/board/test";
+        return "/board/commentest";
     }
     
   

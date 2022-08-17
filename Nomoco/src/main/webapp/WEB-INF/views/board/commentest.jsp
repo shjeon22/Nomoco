@@ -11,8 +11,14 @@
     comment:<input type="text" name="comment"><br>
     <button id="sendBtn" type="button">SEND</button>
     <button id="modBtn" type="button">수정</button>
+    
+    
     <div id="commentList"></div>
     
+    <div id="replyForm" style="display: none">
+   		 <input type="text" name="replyComment">
+   		 <button id="wrtRepBtn" type="button">등록</button>
+    </div>
     
     <script>
     let bno =345;
@@ -114,11 +120,6 @@
              });////////////////댓글 수정///////////////////////
             
             
-            
-            
-            
-            
-            
             ///////////////////////삭제버튼////////////////////////////////////////////////
             $("#commentList").on("click", ".delBtn",function(){
             	let cno = $(this).parent().attr("data-cno");
@@ -136,6 +137,56 @@
            	
                
             });////////////////////삭제////////////////////////////////////////////
+            
+            //////////////////답글///////////////////////////
+           
+            $("#commentList").on("click", ".replyBtn",function(){
+            	   //1.replyForm을 옮기고
+            	   $("#replyForm").appendTo($(this).parent());
+            	   //2.답글입력할 폼보여줌
+             	$("#replyForm").css("display","block");
+               });
+            
+            
+            $("#wrtRepBtn").click(function(){
+            	let comment =$("input[name=replyComment]").val();
+            	let pcno =$("#replyForm").parent().attr("data-pcno");
+            	
+            	if(comment.trim()==''){
+            		alert("댓글을 입력하세요");
+            		$("input[name=replyComment]").focus()
+            		return;
+            	}
+            	
+            	
+            	
+                $.ajax({
+                    type:'POST',       // 요청 메서드
+                    url: '/board/comments?bno='+bno,  // 요청 URI 커맨트레스트 컨트롤러에서 수정 uri랑 똑같이@@(확인해)
+                    headers : { "content-type": "application/json"}, // 요청 헤더
+                    data : JSON.stringify({pcno:pcno, bno:bno, comment:comment}),  // 서버로 전송할 데이터. stringify()로 직렬화 필요.
+                    success : function(result){
+                     alert(result);
+                    showList(bno);//댓글목록 갱신
+                    },
+                    error   : function(){ alert("error") } // 에러가 발생했을 때, 호출될 함수
+                }); // $.ajax()
+                
+                $("#replyForm").css("display", "none")
+                $("input[name=replyComment]").val('')
+                $("#replyForm").appendTo("body");
+               
+            });
+            
+            
+            
+            
+            
+            
+            
+            
+            //////////////////답글///////////////////////////
+           
         });
         
         let toHtml =function(comments){
@@ -146,11 +197,14 @@
         	tmp += '<li data-cno='+ comment.cno
         	tmp += ' data-pcno=' + comment.pcno
         	tmp += ' data-bno=' + comment.bno + '>'
+        	if(comment.cno!=comment.pcno)
+        	tmp += 'ㄴ'
         	tmp += ' commenter=<span class="commenter">' + comment.commenter + '</span>'
         	tmp += ' comment=<span class="comment">' + comment.comment + '</span>'
         	tmp += ' up_date'+comment.up_date
         	tmp += '<button class="delBtn">삭제</button>'
         	tmp += '<button class="modBtn">수정</button>'
+        	tmp += '<button class="replyBtn">답글</button>'
         	tmp += '</li>'
         })
         
