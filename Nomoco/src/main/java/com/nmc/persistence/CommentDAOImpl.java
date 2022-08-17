@@ -48,8 +48,8 @@ public class CommentDAOImpl implements CommentDAO {
 	@Override
 	public int delete(Integer cno, String commenter) throws Exception {
 		
-		@SuppressWarnings("rawtypes")
-		Map<String, Comparable> map = new HashMap<String, Comparable>();
+	
+		Map map = new HashMap();
 		map.put("cno", cno);
 		map.put("commenter", commenter);
 		

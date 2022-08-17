@@ -78,27 +78,25 @@ public class CommentRESTController {
 		}
 	}
 
-	// 댓글 수정
-	// /comments/10 PATCH
-	@PatchMapping("/comments/{cno}")
-	public ResponseEntity<String> modify(@PathVariable Integer cno, @RequestBody CommentVO vo, HttpSession session) {
-	//	String commenter = (String) session.getAttribute("id");
-		String commenter = "asdf";
-		vo.setCommenter(commenter);
-		vo.setCno(cno);
-		log.info("vo =" + vo);
+	 // 댓글을 수정하는 메서드
+    @PatchMapping("/comments/{cno}")   // /board/comments/26  PATCH
+    public ResponseEntity<String> modify(@PathVariable Integer cno, @RequestBody CommentVO vo) {
+//        String commenter = (String)session.getAttribute("id");
+        String commenter = "asdf";
+        vo.setCommenter(commenter);
+        vo.setCno(cno);
+        System.out.println("vo = " + vo);
 
-		try {
-			if (service.modify(vo) != 1)
-				throw new Exception("Write failed@");
+        try {
+            if(service.modify(vo)!=1)
+                throw new Exception("Write failed.");
 
-			return new ResponseEntity<>("MOD_OK", HttpStatus.OK);// 200
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new ResponseEntity<String>("MOD_ERR", HttpStatus.BAD_REQUEST);// 400
-		}
-	}
+            return new ResponseEntity<>("MOD_OK", HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<String>("MOD_ERR", HttpStatus.BAD_REQUEST);
+        }
+    }
 
 	// 지정된 댓글을 삭제하는 메서드
     @DeleteMapping("/comments/{cno}")  // DELETE /comments/1?bno=345  <-- 삭제할 댓글 번호
