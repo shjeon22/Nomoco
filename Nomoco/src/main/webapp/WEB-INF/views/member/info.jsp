@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <jsp:include page="../include/header.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,4 +23,5 @@
 <h3><a href="${pageContext.request.contextPath }/member/index">메인페이지</a></h3>
 <h3><a href="${pageContext.request.contextPath }/member/mypage">마이페이지</a></h3>
 </body>
+<jsp:include page="../include/footer.jsp" />
 </html>

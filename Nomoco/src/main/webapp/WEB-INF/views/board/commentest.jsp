@@ -21,7 +21,7 @@
     </div>
     
     <script>
-    let bno =345;
+ /*    let bno =345; */
     
     let showList = function(bno){
     

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/board/*")
-public class SimpleRESTController {
+public class ReplyTestRESTController {
 	
 	// http://localhost:8088/board/commentest
     @GetMapping("/commentest")
@@ -15,4 +15,6 @@ public class SimpleRESTController {
     }
     
   
+    
+    
 }

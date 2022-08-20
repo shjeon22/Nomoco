@@ -180,7 +180,7 @@ to {
 					for="pw"><b>비밀번호</b></label> <input type="password"
 					placeholder="비밀번호를 입력해주세요." name="pw" required>
 
-        <input type="checkbox" checked="checked" name="rememberId"  value="on" ${empty cookie.id.value ? "":"checked"}> id 기억하기
+     <%--    <input type="checkbox" checked="checked" name="rememberId"  value="on" ${empty cookie.id.value ? "":"checked"}> id 기억하기 --%>
 				<button type="submit">로그인</button>
 				  <label>
       </label>

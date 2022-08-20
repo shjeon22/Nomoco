@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <jsp:include page="../include/header.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,3 +27,4 @@ if( id == null ){
 </fieldset>
 </body>
 </html>
+<jsp:include page="../include/footer.jsp" />
