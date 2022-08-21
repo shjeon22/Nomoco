@@ -5,224 +5,220 @@
 
 <!DOCTYPE html>
 <html>
-<jsp:include page="../include/header.jsp"/>
+<jsp:include page="../include/header.jsp" />
 <script src="http://wooshin.mireene.co.kr/g5/js/jquery-1.8.3.min.js"></script>
 
 <!--ㄴㄴㄴ댓글  -->
-    <style>  
-    
+<style>
 * {
-    border : 0;
-    padding : 0;
+	border: 0;
+	padding: 0;
 }
 
 ul {
-    border:  1px solid rgb(235,236,239);
-    border-bottom : 0;
+	border: 1px solid rgb(235, 236, 239);
+	border-bottom: 0;
 }
 
 li {
-    background-color: #f9f9fa;
-    list-style-type: none;
-    border-bottom : 1px solid rgb(235,236,239);
-    padding : 18px 18px 0 18px;
+	background-color: #f9f9fa;
+	list-style-type: none;
+	border-bottom: 1px solid rgb(235, 236, 239);
+	padding: 18px 18px 0 18px;
 }
 
 #commentList {
-    width : 50%;
-    margin : auto;
+	width: 50%;
+	margin: auto;
 }
 
 .comment-content {
-    overflow-wrap: break-word;
+	overflow-wrap: break-word;
 }
 
 .comment-bottom {
-    font-size:9pt;
-    color : rgb(97,97,97);
-    padding: 8px 0 8px 0;
+	font-size: 9pt;
+	color: rgb(97, 97, 97);
+	padding: 8px 0 8px 0;
 }
 
-.comment-bottom > a {
-    color : rgb(97,97,97);
-    text-decoration: none;
-    margin : 0 6px 0 0;
+.comment-bottom>a {
+	color: rgb(97, 97, 97);
+	text-decoration: none;
+	margin: 0 6px 0 0;
 }
 
 .comment-area {
-    padding : 0 0 0 46px;
+	padding: 0 0 0 46px;
 }
 
 .commenter {
-    font-size:12pt;
-    font-weight:bold;
+	font-size: 12pt;
+	font-weight: bold;
 }
 
 .commenter-writebox {
-    padding : 15px 20px 20px 20px;
+	padding: 15px 20px 20px 20px;
 }
 
 .comment-img {
-    font-size:36px;
-    position: absolute;
+	font-size: 36px;
+	position: absolute;
 }
 
 .comment-item {
-    position:relative;
+	position: relative;
 }
 
 .up_date {
-    margin : 0 8px 0 0;
+	margin: 0 8px 0 0;
 }
 
 #comment-writebox {
-    background-color: white;
-    border : 1px solid #e5e5e5;
-    border-radius: 5px;
+	background-color: white;
+	border: 1px solid #e5e5e5;
+	border-radius: 5px;
 }
 
 textarea {
-    display: block;
-    width: 100%;
-    min-height: 17px;
-    padding: 0 20px;
-    border: 0;
-    outline: 0;
-    font-size: 13px;
-    resize: none;
-    box-sizing: border-box;
-    background: transparent;
-    overflow-wrap: break-word;
-    overflow-x: hidden;
-    overflow-y: auto;
+	display: block;
+	width: 100%;
+	min-height: 17px;
+	padding: 0 20px;
+	border: 0;
+	outline: 0;
+	font-size: 13px;
+	resize: none;
+	box-sizing: border-box;
+	background: transparent;
+	overflow-wrap: break-word;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 #comment-writebox-bottom {
-    padding : 3px 10px 10px 10px;
-    min-height : 35px;
+	padding: 3px 10px 10px 10px;
+	min-height: 35px;
 }
 
 .btn {
-    font-size:10pt;
-    color : black;
-    background-color: #eff0f2;
-    text-decoration: none;
-    padding : 9px 10px 9px 10px;
-    border-radius: 5px;
-    float : right;
+	font-size: 10pt;
+	color: black;
+	background-color: #eff0f2;
+	text-decoration: none;
+	padding: 9px 10px 9px 10px;
+	border-radius: 5px;
+	float: right;
 }
 
-#btn-write-comment, #btn-write-reply { 
-    color : #009f47;
-    background-color: #e0f8eb;
+#btn-write-comment, #btn-write-reply {
+	color: #009f47;
+	background-color: #e0f8eb;
 }
 
-#btn-cancel-reply { 
-    background-color: #eff0f2;
-    margin-right : 10px;
+#btn-cancel-reply {
+	background-color: #eff0f2;
+	margin-right: 10px;
 }
 
-#btn-write-modify { 
-    color : #009f47;
-    background-color: #e0f8eb;
+#btn-write-modify {
+	color: #009f47;
+	background-color: #e0f8eb;
 }
 
-#btn-cancel-modify { 
-    margin-right : 10px;
+#btn-cancel-modify {
+	margin-right: 10px;
 }
 
 #reply-writebox {
-    display : none;
-    background-color: white;
-    border : 1px solid #e5e5e5;
-    border-radius: 5px;
-    margin : 10px;
+	display: none;
+	background-color: white;
+	border: 1px solid #e5e5e5;
+	border-radius: 5px;
+	margin: 10px;
 }
 
 #reply-writebox-bottom {
-    padding : 3px 10px 10px 10px;
-    min-height : 35px;
+	padding: 3px 10px 10px 10px;
+	min-height: 35px;
 }
 
 #modify-writebox {
-    background-color: white;
-    border : 1px solid #e5e5e5;
-    border-radius: 5px;
-    margin : 10px;
+	background-color: white;
+	border: 1px solid #e5e5e5;
+	border-radius: 5px;
+	margin: 10px;
 }
 
 #modify-writebox-bottom {
-    padding : 3px 10px 10px 10px;
-    min-height : 35px;
+	padding: 3px 10px 10px 10px;
+	min-height: 35px;
 }
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 50%;
 }
 
 /* The Close Button */
 .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }
-
-
 
 .paging {
-    color: black;
-    width: 100%;
-    text-align: center;
+	color: black;
+	width: 100%;
+	text-align: center;
 }
 
 .page {
-    color: black;
-    text-decoration: none;
-    padding: 6px;
-    margin-right: 10px;
+	color: black;
+	text-decoration: none;
+	padding: 6px;
+	margin-right: 10px;
 }
 
 .paging-active {
-    background-color: rgb(216, 216, 216);
-    border-radius: 5px;
-    color: rgb(24, 24, 24);
+	background-color: rgb(216, 216, 216);
+	border-radius: 5px;
+	color: rgb(24, 24, 24);
 }
 
 .paging-container {
-    width:100%;
-    height: 70px;
-    margin-top: 50px;
-    margin : auto;
+	width: 100%;
+	height: 70px;
+	margin-top: 50px;
+	margin: auto;
 }
-    </style>
+</style>
 <!--ㄴㄴㄴ댓글  -->
 <style type="text/css">
 html {
@@ -327,7 +323,7 @@ a:link {
 	font-size: 1.2rem;
 }
 
-html, body { 
+html, body {
 	overflow-x: hidden;
 }
 
@@ -337,7 +333,7 @@ html, body {
 }
 
 .table-common .btn-box {
-	text-align:center;
+	text-align: center;
 }
 
 .table-common>table th, .table-common>table td {
@@ -346,340 +342,339 @@ html, body {
 }
 
 .article-list table {
-    border:none;   
-    border-top:2px solid lightgray;
-    border-bottom:2px solid lightgray;
+	border: none;
+	border-top: 2px solid lightgray;
+	border-bottom: 2px solid lightgray;
 }
 
-.article-list > table th, .article-list > table td {
-    border:none;
+.article-list>table th, .article-list>table td {
+	border: none;
 }
 
-.article-list > table td {
-    border-bottom:1px solid lightgray;
+.article-list>table td {
+	border-bottom: 1px solid lightgray;
 }
 
-.article-list > table thead {
-    border-bottom:2px solid lightgray;
-    background-color:#F5F5F5;
+.article-list>table thead {
+	border-bottom: 2px solid lightgray;
+	background-color: #F5F5F5;
 }
 
 .article-detail {
-    border:2px solid lightgray;
+	border: 2px solid lightgray;
 }
 
-.article-detail > table {
-    border:none;
-    width:calc(100% - 100px);
+.article-detail>table {
+	border: none;
+	width: calc(100% - 100px);
 }
 
-.article-detail > table th, .article-detail > table td {
-    border:none;
+.article-detail>table th, .article-detail>table td {
+	border: none;
 }
 
-.article-detail > table tr:not(:last-child) {
-    border-bottom:1px solid lightgray;
+.article-detail>table tr:not(:last-child) {
+	border-bottom: 1px solid lightgray;
 }
 
-.article-detail > table tr:not(.article-body), .article-detail > table tr:not(.article-body) > td{
-    height:20px;
-    font-size:0.8rem;
+.article-detail>table tr:not(.article-body), .article-detail>table tr:not(.article-body)>td
+	{
+	height: 20px;
+	font-size: 0.8rem;
 }
 
-.article-detail > table tr.article-title > td {
-    height:40px;
-    font-weight:bold;
-    font-size:1.2rem;
+.article-detail>table tr.article-title>td {
+	height: 40px;
+	font-weight: bold;
+	font-size: 1.2rem;
 }
 
-.article-detail > table td:last-child {
-    padding-right:100px;
+.article-detail>table td:last-child {
+	padding-right: 100px;
 }
 
-.article-detail > .article-writer {
-    width:100px;
-    height:102px;
-    background-color:lightgray;
-    border-bottom:1px solid lightgray;
-    text-align:center;
+.article-detail>.article-writer {
+	width: 100px;
+	height: 102px;
+	background-color: lightgray;
+	border-bottom: 1px solid lightgray;
+	text-align: center;
 }
 
-.article-detail > .article-writer .writer-icon {
-    margin:0 auto;
-    background-color:white;
-    width:80px;
-    height:80px;
-    border-radius:50%;
+.article-detail>.article-writer .writer-icon {
+	margin: 0 auto;
+	background-color: white;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
 }
 
 .reply {
-    margin-top:20px;
-    border:2px solid lightgray;
-    padding:15px;
-    box-sizing:border-box;
+	margin-top: 20px;
+	border: 2px solid lightgray;
+	padding: 15px;
+	box-sizing: border-box;
 }
 
 .reply-form {
-    padding:10px;
+	padding: 10px;
 }
 
-.reply-form > form input[type="text"] {
-    width:200px;
+.reply-form>form input[type="text"] {
+	width: 200px;
 }
 
-.reply-form > form textarea {
-    width:calc(100% - 100px);
-    min-height:40px;
+.reply-form>form textarea {
+	width: calc(100% - 100px);
+	min-height: 40px;
 }
 
-.reply-form > form input[type="submit"] {
-    width:80px;
-    height:40px;
-    transform:translatey(-40%);
+.reply-form>form input[type="submit"] {
+	width: 80px;
+	height: 40px;
+	transform: translatey(-40%);
 }
 
-.reply-form > form > div:not(:last-child) {
-    margin-bottom:5px;
+.reply-form>form>div:not(:last-child) {
+	margin-bottom: 5px;
 }
 
-.reply-list > table {
-    border:none;
+.reply-list>table {
+	border: none;
 }
 
-.reply-list > table th {
-    display:none;
+.reply-list>table th {
+	display: none;
 }
 
-.reply-list > table td {
-    border:none;
+.reply-list>table td {
+	border: none;
 }
 
-.reply-list > table tr:nth-child(2n+1) {
-    background-color:rgba(0,0,0,0.06);
+.reply-list>table tr:nth-child(2n+1) {
+	background-color: rgba(0, 0, 0, 0.06);
 }
 
-.reply-list > table td:first-child {
-    font-weight:bold;
+.reply-list>table td:first-child {
+	font-weight: bold;
 }
 
-.reply-list > table td:first-child::after {
-    content:" : ";
-    font-weight:bold;
-}</style>
+.reply-list>table td:first-child::after {
+	content: " : ";
+	font-weight: bold;
+}
+</style>
 
-  <style>  
+<style>
 * {
-    border : 0;
-    padding : 0;
+	border: 0;
+	padding: 0;
 }
 
 ul {
-    border:  1px solid rgb(235,236,239);
-    border-bottom : 0;
+	border: 1px solid rgb(235, 236, 239);
+	border-bottom: 0;
 }
 
 li {
-    background-color: #f9f9fa;
-    list-style-type: none;
-    border-bottom : 1px solid rgb(235,236,239);
-    padding : 18px 18px 0 18px;
+	background-color: #f9f9fa;
+	list-style-type: none;
+	border-bottom: 1px solid rgb(235, 236, 239);
+	padding: 18px 18px 0 18px;
 }
 
 #commentList {
-    width : 50%;
-    margin : auto;
+	width: 50%;
+	margin: auto;
 }
 
 .comment-content {
-    overflow-wrap: break-word;
+	overflow-wrap: break-word;
 }
 
 .comment-bottom {
-    font-size:9pt;
-    color : rgb(97,97,97);
-    padding: 8px 0 8px 0;
+	font-size: 9pt;
+	color: rgb(97, 97, 97);
+	padding: 8px 0 8px 0;
 }
 
-.comment-bottom > a {
-    color : rgb(97,97,97);
-    text-decoration: none;
-    margin : 0 6px 0 0;
+.comment-bottom>a {
+	color: rgb(97, 97, 97);
+	text-decoration: none;
+	margin: 0 6px 0 0;
 }
 
 .comment-area {
-    padding : 0 0 0 46px;
+	padding: 0 0 0 46px;
 }
 
 .commenter {
-    font-size:12pt;
-    font-weight:bold;
+	font-size: 12pt;
+	font-weight: bold;
 }
 
 .commenter-writebox {
-    padding : 15px 20px 20px 20px;
+	padding: 15px 20px 20px 20px;
 }
 
 .comment-img {
-    font-size:36px;
-    position: absolute;
+	font-size: 36px;
+	position: absolute;
 }
 
 .comment-item {
-    position:relative;
+	position: relative;
 }
 
 .up_date {
-    margin : 0 8px 0 0;
+	margin: 0 8px 0 0;
 }
 
 #comment-writebox {
-    background-color: white;
-    border : 1px solid #e5e5e5;
-    border-radius: 5px;
+	background-color: white;
+	border: 1px solid #e5e5e5;
+	border-radius: 5px;
 }
 
 textarea {
-    display: block;
-    width: 100%;
-    min-height: 17px;
-    padding: 0 20px;
-    border: 0;
-    outline: 0;
-    font-size: 13px;
-    resize: none;
-    box-sizing: border-box;
-    background: transparent;
-    overflow-wrap: break-word;
-    overflow-x: hidden;
-    overflow-y: auto;
+	display: block;
+	width: 100%;
+	min-height: 17px;
+	padding: 0 20px;
+	border: 0;
+	outline: 0;
+	font-size: 13px;
+	resize: none;
+	box-sizing: border-box;
+	background: transparent;
+	overflow-wrap: break-word;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 #comment-writebox-bottom {
-    padding : 3px 10px 10px 10px;
-    min-height : 35px;
+	padding: 3px 10px 10px 10px;
+	min-height: 35px;
 }
 
 .btn {
-    font-size:10pt;
-    color : black;
-    background-color: #eff0f2;
-    text-decoration: none;
-    padding : 9px 10px 9px 10px;
-    border-radius: 5px;
-    float : right;
+	font-size: 10pt;
+	color: black;
+	background-color: #eff0f2;
+	text-decoration: none;
+	padding: 9px 10px 9px 10px;
+	border-radius: 5px;
+	float: right;
 }
 
-#btn-write-comment, #btn-write-reply { 
-    color : #009f47;
-    background-color: #e0f8eb;
+#btn-write-comment, #btn-write-reply {
+	color: #009f47;
+	background-color: #e0f8eb;
 }
 
-#btn-cancel-reply { 
-    background-color: #eff0f2;
-    margin-right : 10px;
+#btn-cancel-reply {
+	background-color: #eff0f2;
+	margin-right: 10px;
 }
 
-#btn-write-modify { 
-    color : #009f47;
-    background-color: #e0f8eb;
+#btn-write-modify {
+	color: #009f47;
+	background-color: #e0f8eb;
 }
 
-#btn-cancel-modify { 
-    margin-right : 10px;
+#btn-cancel-modify {
+	margin-right: 10px;
 }
 
 #reply-writebox {
-    display : none;
-    background-color: white;
-    border : 1px solid #e5e5e5;
-    border-radius: 5px;
-    margin : 10px;
+	display: none;
+	background-color: white;
+	border: 1px solid #e5e5e5;
+	border-radius: 5px;
+	margin: 10px;
 }
 
 #reply-writebox-bottom {
-    padding : 3px 10px 10px 10px;
-    min-height : 35px;
+	padding: 3px 10px 10px 10px;
+	min-height: 35px;
 }
 
 #modify-writebox {
-    background-color: white;
-    border : 1px solid #e5e5e5;
-    border-radius: 5px;
-    margin : 10px;
+	background-color: white;
+	border: 1px solid #e5e5e5;
+	border-radius: 5px;
+	margin: 10px;
 }
 
 #modify-writebox-bottom {
-    padding : 3px 10px 10px 10px;
-    min-height : 35px;
+	padding: 3px 10px 10px 10px;
+	min-height: 35px;
 }
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 50%;
 }
 
 /* The Close Button */
 .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }
-
-
 
 .paging {
-    color: black;
-    width: 100%;
-    text-align: center;
+	color: black;
+	width: 100%;
+	text-align: center;
 }
 
 .page {
-    color: black;
-    text-decoration: none;
-    padding: 6px;
-    margin-right: 10px;
+	color: black;
+	text-decoration: none;
+	padding: 6px;
+	margin-right: 10px;
 }
 
 .paging-active {
-    background-color: rgb(216, 216, 216);
-    border-radius: 5px;
-    color: rgb(24, 24, 24);
+	background-color: rgb(216, 216, 216);
+	border-radius: 5px;
+	color: rgb(24, 24, 24);
 }
 
 .paging-container {
-    width:100%;
-    height: 70px;
-    margin-top: 50px;
-    margin : auto;
+	width: 100%;
+	height: 70px;
+	margin-top: 50px;
+	margin: auto;
 }
-    </style>
+</style>
 <body>
 	<!-- Modal -->
 	<div class="modal fade bg-white" id="templatemo_search" tabindex="-1"
@@ -711,151 +706,149 @@ textarea {
 		</div>
 	</div>
 
-<!--///////////게시글 상세/////////////////  -->
-<form action="" role="form" >
-						<input type="hidden" name="bno" value="${vo.bno }">	
-					
-    <section class="article-detail table-common con row" style="margin-left: auto; margin-right: auto;">
-     <div class="article-writer cell">
-                <div class="writer-icon">작성자</div>
-                <span>${vo.writer }</span>
-        </div>
-        <table class="cell" border="1" >
-            <colgroup>
-                <col width="100px">
-            </colgroup>
-            <tbody>
-                <tr class="article-title">
-                    <th>[번호]제목</th>
-                    <td colspan="3" style="text-align: center;">[${vo.bno }] ${vo.title }</td>
-                    
-                    <th>아이피</th>
-                    <td>${vo.ip }</td>
-                </tr>
-                <tr class="article-info">
-                    <th>날짜</th>
-                    <td>${vo.regdate }</td>
-                    <th>조회수</th>
-                    <td>${vo.viewcnt }</td>
-                </tr>
-                
-                <tr class="article-body">
-                 <td>내용</td>   <td colspan="4">${vo.content }</td>
-                </tr>
-            </tbody>
-        </table> <div class="box-footer">
-						<button type="submit" class="btn btn-danger">삭제</button>
-						<button type="submit" class="btn btn-primary">수정</button>
-						<button type="submit" class="btn bg-purple">목록</button>
+	<!--///////////게시글 상세/////////////////  -->
+	<form action="" role="form">
+		<input type="hidden" name="bno" value="${vo.bno }">
+
+		<section class="article-detail table-common con row"
+			style="margin-left: auto; margin-right: auto;">
+			<div class="article-writer cell">
+				<div class="writer-icon">작성자</div>
+				<span>${vo.writer }</span>
+			</div>
+			<table class="cell" border="1">
+				<colgroup>
+					<col width="100px">
+				</colgroup>
+				<tbody>
+					<tr class="article-title">
+						<th>[번호]제목</th>
+						<td colspan="3" style="text-align: center;">[${vo.bno }]
+							${vo.title }</td>
+
+						<th>아이피</th>
+						<td>${vo.ip }</td>
+					</tr>
+					<tr class="article-info">
+						<th>날짜</th>
+						<td>${vo.regdate }</td>
+						<th>조회수</th>
+						<td>${vo.viewcnt }</td>
+					</tr>
+
+					<tr class="article-body">
+						<td>내용</td>
+						<td colspan="4">${vo.content }</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="box-footer">
+				<button type="submit" class="btn btn-danger">삭제</button>
+				<button type="submit" class="btn btn-primary">수정</button>
+				<button type="submit" class="btn bg-purple">목록</button>
+			</div>
+		</section>
+	</form>
+	<!--///////////////////////////////  -->
+
+	<!--댓글  -->
+	<div id="commentList">
+		<ul>
+			<li class="comment-item" data-cno="1" data-bno="1070"><span
+				class="comment-img"> <i class="fa fa-user-circle"
+					aria-hidden="true"></i>
+			</span>
+				<div class="comment-area">
+					<div class="commenter">asdf</div>
+					<div class="comment-content">asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf
 					</div>
-    </section>
-</form>
-<!--///////////////////////////////  -->
+					<div class="comment-bottom">
+						<span class="up_date">2022.01.01 23:59:59</span> <a href="#"
+							class="btn-write" data-cno="1" data-bno="1070" data-pcno="">답글쓰기</a>
+						<a href="#" class="btn-modify" data-cno="1" data-bno="1070"
+							data-pcno="">수정</a> <a href="#" class="btn-delete" data-cno="1"
+							data-bno="1070" data-pcno="">삭제</a>
+					</div>
+				</div></li>
+			<li class="comment-item" data-cno="2" data-bno="1070"><span
+				class="comment-img"> <i class="fa fa-user-circle"
+					aria-hidden="true"></i>
+			</span>
+				<div class="comment-area">
+					<div class="commenter">qwer</div>
+					<div class="comment-content">qwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwer
+					</div>
+					<div class="comment-bottom">
+						<span class="up_date">2022.01.01 23:59:59</span> <a href="#"
+							class="btn-write" data-cno="2" data-bno="1070" data-pcno="">답글쓰기</a>
+						<a href="#" class="btn-modify" data-cno="2" data-bno="1070"
+							data-pcno="">수정</a> <a href="#" class="btn-delete" data-cno="2"
+							data-bno="1070" data-pcno="">삭제</a>
+					</div>
+				</div></li>
+		</ul>
+		<div class="paging-container">
+			<div class="paging">
+				<a class="page" href="#">&lt;</a> <a class="page" href="#">1</a> <a
+					class="page" href="#">2</a> <a class="page" href="#">3</a> <a
+					class="page" href="#">4</a> <a class="page paging-active" href="#">5</a>
+				<a class="page" href="#">6</a> <a class="page" href="#">7</a> <a
+					class="page" href="#">8</a> <a class="page" href="#">9</a> <a
+					class="page" href="#">10</a> <a class="page" href="#">&gt;</a>
+			</div>
+		</div>
+		<div id="comment-writebox">
+			<div class="commenter commenter-writebox">${id}</div>
+			<div class="comment-writebox-content">
+				<textarea name="" id="" cols="30" rows="3" placeholder="댓글을 남겨보세요"></textarea>
+			</div>
+			<div id="comment-writebox-bottom">
+				<div class="register-box">
+					<a href="#" class="btn" id="btn-write-comment">등록</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="reply-writebox">
+		<div class="commenter commenter-writebox">${id}</div>
+		<div class="reply-writebox-content">
+			<textarea name="" id="" cols="30" rows="3" placeholder="댓글을 남겨보세요"></textarea>
+		</div>
+		<div id="reply-writebox-bottom">
+			<div class="register-box">
+				<a href="#" class="btn" id="btn-write-reply">등록</a> <a href="#"
+					class="btn" id="btn-cancel-reply">취소</a>
+			</div>
+		</div>
+	</div>
+	<div id="modalWin" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>
+			<h2>| 댓글 수정</h2>
+			<div id="modify-writebox">
+				<div class="commenter commenter-writebox"></div>
+				<div class="modify-writebox-content">
+					<textarea name="" id="" cols="30" rows="5" placeholder="댓글을 남겨보세요"></textarea>
+				</div>
+				<div id="modify-writebox-bottom">
+					<div class="register-box">
+						<a href="#" class="btn" id="btn-write-modify">등록</a>
+					</div>
+				</div>
+			</div>
+			</p>
+		</div>
+	</div>
+	<!--댓글  -->
 
-<!--댓글  -->
-    <div id="commentList">
-        <ul>
-            <li class="comment-item" data-cno="1" data-bno="1070">
-                <span class="comment-img">
-                    <i class="fa fa-user-circle" aria-hidden="true"></i>
-                </span>
-                <div class="comment-area">
-                    <div class="commenter">asdf</div>
-                    <div class="comment-content">asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf
-                    </div>
-                    <div class="comment-bottom">
-                        <span class="up_date">2022.01.01 23:59:59</span> 
-                        <a href="#" class="btn-write"  data-cno="1" data-bno="1070" data-pcno="">답글쓰기</a>
-                        <a href="#" class="btn-modify" data-cno="1" data-bno="1070" data-pcno="">수정</a>
-                        <a href="#" class="btn-delete" data-cno="1" data-bno="1070" data-pcno="">삭제</a>
-                    </div>    
-                </div>
-            </li>
-            <li class="comment-item" data-cno="2" data-bno="1070">
-                <span class="comment-img">
-                    <i class="fa fa-user-circle" aria-hidden="true"></i>
-                </span>
-                <div class="comment-area">
-                    <div class="commenter">qwer</div>
-                    <div class="comment-content">qwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwer
-                    </div>
-                    <div class="comment-bottom">
-                        <span class="up_date">2022.01.01 23:59:59</span> 
-                        <a href="#" class="btn-write"  data-cno="2" data-bno="1070" data-pcno="">답글쓰기</a>
-                        <a href="#" class="btn-modify" data-cno="2" data-bno="1070" data-pcno="">수정</a>
-                        <a href="#" class="btn-delete" data-cno="2" data-bno="1070" data-pcno="">삭제</a>
-                    </div>    
-                </div>
-            </li>            
-        </ul>
-        <div class="paging-container">
-            <div class="paging">
-                <a class="page" href="#">&lt;</a>
-                <a class="page" href="#">1</a>
-                <a class="page" href="#">2</a>
-                <a class="page" href="#">3</a>
-                <a class="page" href="#">4</a>
-                <a class="page paging-active" href="#">5</a>
-                <a class="page" href="#">6</a>
-                <a class="page" href="#">7</a>
-                <a class="page" href="#">8</a>
-                <a class="page" href="#">9</a>
-                <a class="page" href="#">10</a>
-                <a class="page" href="#">&gt;</a>
-            </div>
-        </div>
-        <div id="comment-writebox">
-            <div class="commenter commenter-writebox">${id}</div>
-            <div class="comment-writebox-content">
-                <textarea name="" id="" cols="30" rows="3" placeholder="댓글을 남겨보세요"></textarea>
-            </div>
-            <div id="comment-writebox-bottom">
-                <div class="register-box">
-                    <a href="#" class="btn" id="btn-write-comment">등록</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="reply-writebox">
-        <div class="commenter commenter-writebox">${id}</div>
-        <div class="reply-writebox-content">
-            <textarea name="" id="" cols="30" rows="3" placeholder="댓글을 남겨보세요"></textarea>
-        </div>
-        <div id="reply-writebox-bottom">
-            <div class="register-box">
-                <a href="#" class="btn" id="btn-write-reply">등록</a>
-                <a href="#" class="btn" id="btn-cancel-reply">취소</a> 
-            </div>
-        </div>
-    </div>
-    <div id="modalWin" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>
-            <h2> | 댓글 수정</h2>
-            <div id="modify-writebox">
-                <div class="commenter commenter-writebox"></div>
-                <div class="modify-writebox-content">
-                    <textarea name="" id="" cols="30" rows="5" placeholder="댓글을 남겨보세요"></textarea>
-                </div>
-                <div id="modify-writebox-bottom">
-                    <div class="register-box">
-                        <a href="#" class="btn" id="btn-write-modify">등록</a>
-                    </div>
-                </div>
-            </div>
-            </p>
-        </div>
-    </div>
-<!--댓글  -->
-					
-					
-					
+
+
 	<!-- End Contact -->
-	
 
-<script type="text/javascript">
+
+	<script type="text/javascript">
 	$(document).ready(function(){
 		// 목록 버튼 클릭시
 		$('.bg-purple').click(function(){
@@ -886,7 +879,7 @@ textarea {
 		// 삭제 버튼 클릭
 		// /board/remove - POST 방식 
 		$(".btn-danger").click(function(){
-alert(" 삭제 버튼 클릭 ");
+			alert(" 삭제 버튼 클릭 ");
 			
 			// 폼태그 action 정보 변경
 			formObj.attr("action","/board/remove");
@@ -905,8 +898,8 @@ alert(" 삭제 버튼 클릭 ");
 
 
 
-<!--댓글 스크립트  -->
-   <script>
+	<!--댓글 스크립트  -->
+	<script>
       /*   let id = 'test'; */
 
         let addZero = function(value=1){
@@ -978,9 +971,9 @@ alert(" 삭제 버튼 클릭 ");
             });
         });
     </script>
-<!--댓글 스크립트  -->
+	<!--댓글 스크립트  -->
 
 
 
 
-<jsp:include page="../include/footer.jsp"/>
+	<jsp:include page="../include/footer.jsp" />

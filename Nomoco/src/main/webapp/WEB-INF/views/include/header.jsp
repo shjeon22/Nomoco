@@ -71,7 +71,7 @@ https://templatemo.com/tm-559-zay-shop
 			class="container d-flex justify-content-between align-items-center">
 
 			<a class="navbar-brand text-success logo h1 align-self-center"
-				href="index.html"> Nomoco </a>
+				href="${pageContext.request.contextPath }/index"> Nomoco </a>
 
 			<button class="navbar-toggler border-0" type="button"
 				data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav"
@@ -86,9 +86,9 @@ https://templatemo.com/tm-559-zay-shop
 				<div class="flex-fill">
 					<ul
 						class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-						<li class="nav-item"><a class="nav-link" href="index.html">Home</a>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/index">Home</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="about.html">About</a>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/covid/info ">발생동향</a>
 						</li>
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath }/board/list">게시판</a></li>
