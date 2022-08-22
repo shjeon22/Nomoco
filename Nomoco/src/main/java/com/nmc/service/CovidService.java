@@ -5,8 +5,10 @@ import org.json.simple.JSONArray;
 
 public interface CovidService {
 
-	public JSONArray getCovidInfo();
+	JSONArray getCovidInfo();
 
-	public JSONArray getCovidInfo2();
+	JSONArray getCovidInfo2();
+
+	JSONArray getCovidinfo3();
 	
 }

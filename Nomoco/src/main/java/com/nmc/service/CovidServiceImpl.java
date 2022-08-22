@@ -116,6 +116,45 @@ public class CovidServiceImpl implements CovidService {
 
 			return covidList2;
 		}
+		@Override
+		public JSONArray getCovidinfo3() {
+			//일자별 실시간 확진 현황(매주 update)
+			String url = "http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=11&ncvContSeq=&contSeq=&board_id=&gubun=";
+			
+			Document doc = null;
+			
+			try {
+				doc = Jsoup.connect(url).get();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			Elements c_title = doc.select("#content > div > h5:nth-child(13)"); // 1. 일자별 확진현황名
+			Elements c_info = doc.select("#content > div > div:nth-child(14) > table > thead"); //2. 날짜
+			Elements c_info1 = doc.select("#content > div > div:nth-child(14) > table > tbody > tr:nth-child(1)"); //3.일일확진수
+			Elements c_info2 = doc.select("#content > div > div:nth-child(14) > table > tbody > tr:nth-child(2)"); //4.인구10만명당
+			Elements c_title2 = doc.select("#content > div > div:nth-child(25) > div > h5"); //5.성별 확진현황名
+			Elements c_info3 = doc.select("#content > div > div:nth-child(26) > table > tbody"); //6. 남성&여성
+			
+			JSONArray covidList3 = new JSONArray();
+			
+			for (int i = 0; i < c_title.size(); i++) {
+				JSONObject obj = new JSONObject();
+				
+				obj.put("c_title", c_title.get(i).text());
+				obj.put("c_info", c_info.get(i).text());
+				obj.put("c_info1", c_info1.get(i).text());
+				obj.put("c_info2", c_info2.get(i).text());
+				obj.put("c_title2", c_title2.get(i).text());
+				obj.put("c_info3", c_info3.get(i).text());
+				
+				covidList3.add(obj);
+				System.out.println("covidList2"+covidList3);
+				
+			}
+			
+			return covidList3;
+		}
 
 }
 

@@ -75,20 +75,25 @@
 </div>
 
 <div class="container py-5">
-		<div class="row">
+	<div class="row">
 
-			<div class="col-lg-3">
-				<h1 class="h2 pb-4">Categories</h1>
-				<ul class="list-unstyled templatemo-accordion">
-					<li class="pb-3"><a
-						class="collapsed d-flex justify-content-between h3 text-decoration-none"
-						href="#"> 코로나정보<i
-							class="fa fa-fw fa-chevron-circle-down mt-1"></i>
-					</a>
-						<ul class="collapse show list-unstyled pl-3">
-							<li><a class="text-decoration-none" href="${pageContext.request.contextPath}/covid/info">발생동향</a></li>
-							<li><a class="text-decoration-none" href="${pageContext.request.contextPath}/covid/info2">시도별정보</a></li>
-						</ul></li></ul></div></div></div>
+		<div class="col-lg-3">
+			<h1 class="h2 pb-4">Categories</h1>
+			<ul class="list-unstyled templatemo-accordion">
+				<li class="pb-3"><a
+					class="collapsed d-flex justify-content-between h3 text-decoration-none"
+					href="#"> 코로나정보<i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+				</a>
+					<ul class="collapse show list-unstyled pl-3">
+						<li><a class="text-decoration-none"
+							href="${pageContext.request.contextPath}/covid/info">발생동향</a></li>
+						<li><a class="text-decoration-none"
+							href="${pageContext.request.contextPath}/covid/info2">선별 진료소</a></li>
+					</ul></li>
+			</ul>
+		</div>
+	</div>
+</div>
 <!-- Start Contact -->
 <div class="container py-5">
 	<table class="table table-bordered">
@@ -198,7 +203,7 @@
 		</tr>
 
 	</table>
-	
+
 
 
 </div>
