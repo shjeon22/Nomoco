@@ -71,8 +71,8 @@ https://templatemo.com/tm-559-zay-shop
 			class="container d-flex justify-content-between align-items-center">
 
 			<a class="navbar-brand text-success logo h1 align-self-center"
-				href="${pageContext.request.contextPath }/index"> Nomoco </a>
-
+				href="${pageContext.request.contextPath }/index"> Nomoco <BR> <H5 style="color: BLACK;">No More Corona</H5></a>
+                                                             
 			<button class="navbar-toggler border-0" type="button"
 				data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -88,7 +88,7 @@ https://templatemo.com/tm-559-zay-shop
 						class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/index">Home</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/covid/info ">발생동향</a>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/covid/info ">코로나 현황</a>
 						</li>
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath }/board/list">게시판</a></li>

@@ -37,5 +37,13 @@ public class CovidController {
 		return "/covid/info";
 
 	}
+	// http://localhost:8088/covid/info2
+	@GetMapping("/info2")
+	public String covidInfo2GET() throws Exception {
+		
+		
+		return "/covid/info2";
+		
+	}
 
 }

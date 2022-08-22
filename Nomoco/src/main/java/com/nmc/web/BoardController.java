@@ -31,6 +31,7 @@ public class BoardController {
 	@Inject
 	private BoardService service;
 
+
 	// 게시물 목록(페이징)
 	// http://localhost:8088/board/list
 	@GetMapping("/list")
@@ -150,18 +151,23 @@ public class BoardController {
 	// 글본문보기 +조회수 증가
 	// http://localhost:8088/board/read?bno=1
 	@GetMapping("/read")
-	public void readGET(Integer bno, Integer page, Integer pageSize, Model model) throws Exception {
+	public void readGET(Integer bno, Integer page, Integer pageSize, Model model)
+			throws Exception {
 		// @RequestParam => request.getParameter("이름");
 		// -> 유사한 동작을 수행(문자열,숫자,날짜 자동형 변환)
 
 		log.info("readGET() 호출");
 		log.info("bno: " + bno);
+		
+		//댓글할떄 commenter 못불러올경우 세션에서 직접가져오기!!! 
+//		String id = (String) session.getAttribute("id");
+//		MemberVO mvo = service2.getMember(id);
+//		model.addAttribute(id, mvo);//세션에서 id값가져옴
 
-	
-//		//글 번호를 가지고 서비스 -글정보 가져오기 동작
+		// 글 번호를 가지고 서비스 -글정보 가져오기 동작
 		BoardVO vo = service.readBoard(bno);
-        model.addAttribute("page", page);
-        model.addAttribute("pageSize", pageSize);
+		model.addAttribute("page", page);
+		model.addAttribute("pageSize", pageSize);
 		// 가져온데이터를 view에 출력
 		model.addAttribute("vo", vo);
 
@@ -175,28 +181,29 @@ public class BoardController {
 		log.info("수정할 글 번호 : " + bno);
 
 		// bno에 해당하는 글 정보를 가져와서 처리
-		model.addAttribute("uvo", service.readBoard(bno));//getboard
+		model.addAttribute("uvo", service.readBoard(bno));// getboard
 
 	}
 
 	// 글 수정하기(수정할 정보를 전달받아서 DB에 수정)
 	@PostMapping("/modify")
-	public String modifyPOST(BoardVO vo,Integer page, Integer pageSize, RedirectAttributes rttr,Model model, HttpSession session) throws Exception {
+	public String modifyPOST(BoardVO vo, Integer page, Integer pageSize, RedirectAttributes rttr, Model model,
+			HttpSession session) throws Exception {
 		log.info("modifyPOST() 호출");
 
-		String writer =(String) session.getAttribute("id");
+		String writer = (String) session.getAttribute("id");
 		vo.setWriter(writer);
-		
-		if(service.modify(vo)!=1) {
-		//	throw new Exception("board remove failed!");//예외던지기
+
+		if (service.modify(vo) != 1) {
+			// throw new Exception("board remove failed!");//예외던지기
 			rttr.addFlashAttribute("result", "MODX");
-		}else {
+		} else {
 			rttr.addFlashAttribute("result", "MODOK");
 		}
-		
+
 		model.addAttribute("page", page);
 		model.addAttribute("pageSize", pageSize);
-		
+
 //		return "redirect:/board/list?page=&pageSize";  모델에 정의해두면 자동으로 리다이렉트 할떄 붙여줌
 		return "redirect:/board/list";
 	}

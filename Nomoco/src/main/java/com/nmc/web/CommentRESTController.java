@@ -60,6 +60,7 @@ public class CommentRESTController {
 	}
 
 	// 게시물 모든 댓글 노출
+	// http://localhost:8088/board/comments
 	// /comments?bno=100 GET
 	@GetMapping("/comments")
 	public ResponseEntity<List<CommentVO>> listGET(Integer bno) {
