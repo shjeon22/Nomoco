@@ -5,23 +5,65 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/member.css">
 </head>
 
 <body>
-<h1>info.jsp</h1>
-	<h2>${id}회원정보 출력</h2>
 
-	아이디 :${memberVO.id }  
-	<br> 비밀번호 :${memberVO.pw }
-	<br> 이름: ${memberVO.name }
-	<br> 전화번호 : ${memberVO.tel }
-	<br> 이메일 : ${memberVO.email }
-	<br> 주소 : ${memberVO.address}
-	<br> 회원가입일 : ${memberVO.regdate }
-	<br>
-<h3><a href="${pageContext.request.contextPath }/member/index">메인페이지</a></h3>
-<h3><a href="${pageContext.request.contextPath }/member/mypage">마이페이지</a></h3>
+    <!-- Modal -->
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="w-100 pt-1 mb-5 text-right">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <button type="submit" class="input-group-text bg-success text-light">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <section class="bg-success py-5" style="height: 200px">
+        <div class="container">
+            <div class="row align-items-center py-5"><h1 style="color: white;">${id }님의 회원정보</h1>
+                <div class="col-md-8 text-white">
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+<table class="table table-bordered">
+		<tr>
+			<th colspan="1">아이디</th>
+			<th colspan="1">비밀번호</th>
+			<th colspan="1">이름</th>
+			<th colspan="1">전화번호</th>
+			<th colspan="1">주소</th>
+			<th colspan="1">이메일</th>
+			<th colspan="1">회원가입</th>
+		</tr>
+
+	  		<tr>
+	  		   <td>${memberVO.id } </td>
+	  		   <td>${memberVO.pw }</td>
+	  		   <td>${memberVO.name }</td>
+	  		   <td>${memberVO.tel }</td>
+	  		   <td> ${memberVO.address}</td>
+	  		   <td> ${memberVO.email }</td>
+	  		   <td>${memberVO.regdate }</td>
+	  		</tr>
+	
+	</table>
+
+<h3><a href="${pageContext.request.contextPath }/member/mypage" class="btn btn-block btn-warning btn-lg">마이페이지 </a></h3>
+<h3><a href="${pageContext.request.contextPath }/member/index" class="btn btn-block btn-success btn-lg">메인페이지</a></h3>
 </body>
 <jsp:include page="../include/footer.jsp" />
 </html>

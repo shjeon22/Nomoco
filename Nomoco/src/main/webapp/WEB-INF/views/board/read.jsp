@@ -513,9 +513,9 @@ html, body {
 				<button type="submit" class="btn btn-danger">삭제</button>
 				<button type="submit" class="btn btn-primary">수정</button>
 			</div>
-			<div class="article-writer cell">
-				<div class="writer-icon">작성자</div>
-				<span>${vo.writer }</span>
+			<div class="article-writer cell" style="background-color: black">
+				<div class=""  style="color: white">작성자</div>
+				<span style="color: white">${vo.writer }</span>
 			</div>
 			<table class="cell" border="1">
 				<colgroup>
@@ -547,23 +547,23 @@ html, body {
 		</section>
 	</form>
 	<table><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="submit" class="bg-purple">뒤로가기</button></td></tr></table>
+	<button type="submit" class="bg-purple" style="background-color: #f8ff4e">목록으로</button></td></tr></table>
 	
 	<!--///////////////////////////////  -->
 
 	<!--@@@@@@@@@@@@@@@@@@@@@@@@@댓글@@@@@@@@@@@@@@@@@@@@@@@  -->
-	 <!-- <h2>댓글작성</h2> -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <span style=" font-size:18pt; width:300px;height:200px;font-size:30px;background-color: #e2e2e2;">댓글입력 >>></span>
+	 <!-- <h2>댓글작성</h2> -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span style=" font-size:18pt; width:300px;height:200px;font-size:30px;background-color: #e2e2e2;">Comment</span>
     <input type="text" name="comment" size="50" placeholder="댓글을 입력해주세요" style=" font-size:18pt; width:500px;height:200px;font-size:30px;background-color: #e2e2e2;">
-    <button id="sendBtn" type="button" style="width: 120px; height: 200px; background-color:;">SEND</button>
-    <button id="modBtn" type="button" style="width: 120px; height: 200px; background-color: ;">수정</button>
+    <button id="sendBtn" type="button" style="width: 120px; height: 200px; background-color:#00bf00;"><span style="color: white">SEND</span></button>
+    <button id="modBtn" type="button" style="width: 120px; height: 200px; background-color:#9f54ff;"><span style="color: white">수정</span></button>
     <br>
     
     
     <div id="commentList"></div>
     
     <div id="replyForm" style="display: none">
-   		 <input type="text" name="replyComment">
+   		 <input type="text" name="replyComment" class="form-control">
    		 <button id="wrtRepBtn" type="button">등록</button>
     </div>
     
@@ -655,7 +655,7 @@ html, body {
             
             
             
-             $("#commentList").on("click", ".modBtn",function(){// .moBtn은 클래스 각 댓글마다 달려있는 수정버튼
+             $("#commentList").on("click", ".btn.btn-success",function(){// .moBtn은 클래스 각 댓글마다 달려있는 수정버튼
             	let cno = $(this).parent().attr("data-cno");
             	let comment = $("span.comment", $(this).parent()).text();//this= modBtn클릭 하면  li안의 부모의 span comment만 가져옴
             	
@@ -673,7 +673,7 @@ html, body {
             
             
             ///////////////////////삭제버튼////////////////////////////////////////////////
-            $("#commentList").on("click", ".delBtn",function(){
+            $("#commentList").on("click", ".btn.btn-danger",function(){
             	let cno = $(this).parent().attr("data-cno");
             	let bno = $(this).parent().attr("data-bno");
             	
@@ -692,7 +692,7 @@ html, body {
             
             //////////////////답글///////////////////////////
            
-            $("#commentList").on("click", ".replyBtn",function(){
+            $("#commentList").on("click", ".btn.btn-info",function(){
             	   //1.replyForm을 옮기고
             	   $("#replyForm").appendTo($(this).parent());
             	   //2.답글입력할 폼보여줌
@@ -754,9 +754,9 @@ html, body {
         	tmp += ' 작성자:<span class="commenter">' + comment.commenter +'</span>'
         	tmp += '<br>'+' 내용:<span class="comment">' + comment.comment + '</span>'
         //	tmp += '<br>'+'날짜:'+comment.up_date
-        	tmp += '<br>'+'<button class="delBtn">삭제</button>'+"&nbsp;&nbsp;&nbsp;"
-        	tmp += '<button class="modBtn">수정</button>'+"&nbsp&nbsp;&nbsp;"
-        	tmp += '<button class="replyBtn">답글</button>'
+        	tmp += '<br>'+'<button class="btn btn-danger">삭제</button>'+"&nbsp;&nbsp;&nbsp;"
+        	tmp += '<button class="btn btn-success">수정</button>'+"&nbsp&nbsp;&nbsp;"
+        	tmp += '<button class="btn btn-info">답글</button>'
         	tmp += '</li>'
         })
         
@@ -817,5 +817,5 @@ html, body {
 </script>
 
 
-
-	<jsp:include page="../include/footer.jsp" />
+<%-- 
+	<jsp:include page="../include/footer.jsp" /> --%>

@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
  <jsp:include page="../include/header.jsp" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/member.css">
 
 	<!-- Modal -->
 	<div class="modal fade bg-white" id="templatemo_search" tabindex="-1"

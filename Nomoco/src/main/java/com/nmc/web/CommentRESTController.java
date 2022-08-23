@@ -50,11 +50,11 @@ public class CommentRESTController {
 			if (service.write(vo) != 1)
 				throw new Exception("Write failed!");
 
-			return new ResponseEntity<>("WRT_OK", HttpStatus.OK);// 200
+			return new ResponseEntity<>("Write Success!!!", HttpStatus.OK);// 200
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ResponseEntity<String>("WRT_ERR", HttpStatus.BAD_REQUEST);// 400
+			return new ResponseEntity<String>("Write_ERROR!", HttpStatus.BAD_REQUEST);// 400
 		}
 
 	}

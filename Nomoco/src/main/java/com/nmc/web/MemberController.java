@@ -72,7 +72,7 @@ public class MemberController { // 순서 : 컨트롤러 -> 서비스 호출 -> 
 		rttr.addFlashAttribute("result", "msg");
 
 		// 페이지 이동( 로그인페이지 )
-		return "redirect:/member/login";
+		return "redirect:/member/index";
 
 	}
 
@@ -193,9 +193,8 @@ public class MemberController { // 순서 : 컨트롤러 -> 서비스 호출 -> 
 
 		log.info("삭제정보" + vo);
 		service.deleteMember(vo);
-
 		session.invalidate();
-		rttr.addFlashAttribute("result1", "DELOK");
+		rttr.addFlashAttribute("result", "DELOK");
 		return "redirect:/member/index";
 	}
     

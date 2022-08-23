@@ -106,8 +106,13 @@ https://templatemo.com/tm-559-zay-shop
 				<c:catch var="ex">
 					<c:choose>
 						<c:when test="${empty sessionScope.id  }">
-							<a href="${pageContext.request.contextPath }/member/login">로그인</a> &nbsp;&nbsp;
-       					    <a href="${pageContext.request.contextPath }/member/insert">회원가입</a>
+
+							<jsp:include page="../member/login.jsp" />&nbsp;&nbsp;
+							<jsp:include page="../member/insertForm.jsp" />
+
+
+							<%-- <a href="${pageContext.request.contextPath }/member/login">로그인</a> &nbsp;&nbsp;
+       					    <a href="${pageContext.request.contextPath }/member/insert">회원가입</a> --%>
 						</c:when>
 						<c:otherwise>
 							<c:choose>
