@@ -22,7 +22,6 @@ public class AdminDAOImpl implements AdminDAO {
 
 	private static final String NAMESPACE = "com.nmc.mapper.AdminMapper";
 
-	
 	@Override
 	public List<MemberVO> getMemberList(String adminID) throws Exception {
 		log.info("getMemberList(adminID) 호출");

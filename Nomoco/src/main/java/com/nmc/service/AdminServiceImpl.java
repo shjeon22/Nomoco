@@ -12,16 +12,15 @@ import com.nmc.domain.MemberVO;
 import com.nmc.persistence.AdminDAO;
 
 @Service
-public class AdminServiceImpl  implements AdminService{
-	
+public class AdminServiceImpl implements AdminService {
 
 	private static final Logger log = LoggerFactory.getLogger(AdminServiceImpl.class);
-	
+
 	@Inject
 	private AdminDAO dao;
-	
+
 	@Override
-	public List<MemberVO> getMemberList(String id) throws Exception{
+	public List<MemberVO> getMemberList(String id) throws Exception {
 		log.info("getMemberList(String id) 호출");
 		return dao.getMemberList(id);
 	}

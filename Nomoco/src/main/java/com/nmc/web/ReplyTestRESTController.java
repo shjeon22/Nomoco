@@ -7,17 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/board/*")
 public class ReplyTestRESTController {
-	
+
 	// http://localhost:8088/board/commentest
-    @GetMapping("/commentest")
-    public String ajax() {
-        return "/board/commentest";
-    }
-    
-  
-    
-  
-    
-    
-    
+	@GetMapping("/commentest")
+	public String ajax() {
+		return "/board/commentest";
+	}
+
 }

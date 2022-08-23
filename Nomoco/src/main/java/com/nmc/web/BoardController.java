@@ -31,13 +31,13 @@ public class BoardController {
 	@Inject
 	private BoardService service;
 
-
 	// 게시물 목록(페이징)
 	// http://localhost:8088/board/list
 	@GetMapping("/list")
 	public String listGET(Integer page, Integer pageSize, Model model, HttpServletRequest request) throws Exception {
-		if (!loginCheck(request))
-			return "redirect:/member/login?toURL=" + request.getRequestURL(); // 로그인을 안했으면 로그인 화면으로 이동
+		// if (!loginCheck(request))
+		// return "redirect:/member/login?toURL=" + request.getRequestURL(); // 로그인을
+		// 안했으면 로그인 화면으로 이동
 
 		if (page == null)// 첫페이지가 null이면 1로 지정
 			page = 1;
@@ -151,15 +151,14 @@ public class BoardController {
 	// 글본문보기 +조회수 증가
 	// http://localhost:8088/board/read?bno=1
 	@GetMapping("/read")
-	public void readGET(Integer bno, Integer page, Integer pageSize, Model model)
-			throws Exception {
+	public void readGET(Integer bno, Integer page, Integer pageSize, Model model) throws Exception {
 		// @RequestParam => request.getParameter("이름");
 		// -> 유사한 동작을 수행(문자열,숫자,날짜 자동형 변환)
 
 		log.info("readGET() 호출");
 		log.info("bno: " + bno);
-		
-		//댓글할떄 commenter 못불러올경우 세션에서 직접가져오기!!! 
+
+		// 댓글할떄 commenter 못불러올경우 세션에서 직접가져오기!!!
 //		String id = (String) session.getAttribute("id");
 //		MemberVO mvo = service2.getMember(id);
 //		model.addAttribute(id, mvo);//세션에서 id값가져옴

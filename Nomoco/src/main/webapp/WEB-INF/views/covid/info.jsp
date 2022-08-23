@@ -6,44 +6,8 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="../include/header.jsp" />
-<style>
-.table {
-	border-collapse: collapse;
-	border-top: 3px solid #168;
-}
-
-.table th {
-	color: #168;
-	background: #f0f6f9;
-	text-align: center;
-}
-
-.table th, .table td {
-	padding: 10px;
-	border: 1px solid #ddd;
-	text-align: center;
-}
-
-.table th:first-child, .table td:first-child {
-	border-left: 0;
-	text-align: center;
-}
-
-.table th:last-child, .table td:last-child {
-	border-right: 0;
-	text-align: center;
-}
-
-.table tr td:first-child {
-	text-align: center;
-}
-
-.table caption {
-	caption-side: bottom;
-	display: none;
-}
-</style>
-
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/member/member.css">
 
 <!-- Modal -->
 <div class="modal fade bg-white" id="templatemo_search" tabindex="-1"

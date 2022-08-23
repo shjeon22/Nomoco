@@ -2,11 +2,8 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
-
 <!-- 로그인 모달창 -->
-
 <script>
 	// Get the modal
 	var modal = document.getElementById('id01');
@@ -180,10 +177,9 @@ to {
 					for="pw"><b>비밀번호</b></label> <input type="password"
 					placeholder="비밀번호를 입력해주세요." name="pw" required>
 
-     <%--    <input type="checkbox" checked="checked" name="rememberId"  value="on" ${empty cookie.id.value ? "":"checked"}> id 기억하기 --%>
+				<%--    <input type="checkbox" checked="checked" name="rememberId"  value="on" ${empty cookie.id.value ? "":"checked"}> id 기억하기 --%>
 				<button type="submit">로그인</button>
-				  <label>
-      </label>
+				<label> </label>
 
 			</div>
 
@@ -203,15 +199,13 @@ to {
 
 
 
-<script type="text/javascript">
+	<script type="text/javascript">
+		var result = '${result}';
 
-	var result = '${result}';
-	
-	if(result == "msg"){
-		alert('가입을 축하합니다.!');
-	}
-	
-</script>
+		if (result == "msg") {
+			alert('가입을 축하합니다.!');
+		}
+	</script>
 
 
 

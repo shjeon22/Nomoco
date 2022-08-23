@@ -1,12 +1,11 @@
 package com.nmc.web;
 
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpSession;
 
-
+import org.json.simple.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -22,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nmc.domain.MemberVO;
+import com.nmc.service.CovidService;
 import com.nmc.service.MemberService;
 
 @Controller
@@ -197,30 +197,30 @@ public class MemberController { // 순서 : 컨트롤러 -> 서비스 호출 -> 
 		rttr.addFlashAttribute("result", "DELOK");
 		return "redirect:/member/index";
 	}
-    
+
 	@ResponseBody
 	@PostMapping("/idChk")
 	public int idChk(@RequestParam("id") String id) throws Exception {
 		log.info("idChk() 호출");
-		log.info("전달받은id"+id);
-		int cnt =service.idChk(id);
-		log.info("확인결과"+cnt);
+		log.info("전달받은id" + id);
+		int cnt = service.idChk(id);
+		log.info("확인결과" + cnt);
 		return cnt;
 	}
-	
+
 	@ResponseBody
 	@PostMapping("/telChk")
-	public int telChk(@RequestParam("tel") String tel) throws Exception{
+	public int telChk(@RequestParam("tel") String tel) throws Exception {
 		log.info("telChk() 호출");
-		int tcnt =service.telChk(tel);
+		int tcnt = service.telChk(tel);
 		return tcnt;
 	}
-	
+
 	@ResponseBody
 	@PostMapping("/emailChk")
-	public int emailChk(@RequestParam("email") String email) throws Exception{
+	public int emailChk(@RequestParam("email") String email) throws Exception {
 		log.info("emailChk() 호출");
-		int ecnt= service.emailChk(email);
+		int ecnt = service.emailChk(email);
 		return ecnt;
 	}
 

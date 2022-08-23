@@ -13,7 +13,7 @@ import com.nmc.domain.CommentVO;
 
 @Repository
 public class CommentDAOImpl implements CommentDAO {
-	
+
 	@Inject
 	private SqlSession sqlSession;
 
@@ -21,44 +21,43 @@ public class CommentDAOImpl implements CommentDAO {
 
 	@Override
 	public int insert(CommentVO vo) throws Exception {
-		return sqlSession.insert(NAMESPACE+".insert",vo);
+		return sqlSession.insert(NAMESPACE + ".insert", vo);
 	}
 
 	@Override
 	public List<CommentVO> selectAll(Integer bno) throws Exception {
-		return sqlSession.selectList(NAMESPACE+".selectAll",bno);
+		return sqlSession.selectList(NAMESPACE + ".selectAll", bno);
 	}
 
 	@Override
 	public CommentVO select(Integer cno) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+".select", cno);
-	
+		return sqlSession.selectOne(NAMESPACE + ".select", cno);
+
 	}
 
 	@Override
 	public int count(Integer bno) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+".count",bno);
+		return sqlSession.selectOne(NAMESPACE + ".count", bno);
 	}
 
 	@Override
 	public int update(CommentVO vo) throws Exception {
-		return sqlSession.update(NAMESPACE+".update",vo);
+		return sqlSession.update(NAMESPACE + ".update", vo);
 	}
 
 	@Override
 	public int delete(Integer cno, String commenter) throws Exception {
-		
-	
+
 		Map map = new HashMap();
 		map.put("cno", cno);
 		map.put("commenter", commenter);
-		
-		return sqlSession.delete(NAMESPACE+".delete",map);
+
+		return sqlSession.delete(NAMESPACE + ".delete", map);
 	}
 
 	@Override
-	public int deleteAll(Integer bno){
-		return sqlSession.delete(NAMESPACE+".deleteAll",bno);
+	public int deleteAll(Integer bno) {
+		return sqlSession.delete(NAMESPACE + ".deleteAll", bno);
 	}
-	
-	}
+
+}

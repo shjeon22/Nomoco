@@ -2,7 +2,6 @@ package com.nmc.service;
 
 import org.json.simple.JSONArray;
 
-
 public interface CovidService {
 
 	JSONArray getCovidInfo();
@@ -10,5 +9,5 @@ public interface CovidService {
 	JSONArray getCovidInfo2();
 
 	JSONArray getCovidinfo3();
-	
+
 }

@@ -4,17 +4,17 @@ import java.util.Date;
 
 public class BoardVO {
 
-	private Integer bno;
-	private String title;
-	private String content;
-	private String writer;
-	private String ip;
-	private Date regdate;
-	private int viewcnt;
+	private Integer bno;// 1.게시물 번호
+	private String title;// 2.제목
+	private String content;// 3.내용
+	private String writer;// 4.작성자
+	private String ip;// 5.아이피 주소
+	private Date regdate;// 6.작성일
+	private int viewcnt;// 7.조회수
 
-	public BoardVO() {}
+	public BoardVO() {
+	}
 
-	
 	public BoardVO(Integer bno, String title, String content, String writer, String ip, Date regdate, int viewcnt) {
 		super();
 		this.bno = bno;
@@ -25,7 +25,6 @@ public class BoardVO {
 		this.regdate = regdate;
 		this.viewcnt = viewcnt;
 	}
-
 
 	public Integer getBno() {
 		return bno;
@@ -89,7 +88,4 @@ public class BoardVO {
 				+ ", regdate=" + regdate + ", viewcnt=" + viewcnt + "]";
 	}
 
-	
-
-	
 }

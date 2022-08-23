@@ -4,17 +4,17 @@ import java.sql.Date;
 
 public class MemberVO {
 
-	private String id;
-	private String pw;
-	private String name;
-	private Integer tel;
-	private String email;
-	private String zipcode;
-	private String address;
-	private String address2;
-	private Date regdate;
-	private Date updatedate;
-	
+	private String id; // 1.아이디
+	private String pw;// 2.비밀번호
+	private String name;// 3.이름
+	private Integer tel;// 4.전화번호
+	private String email;// 5.이메일
+	private String zipcode;// 6.우편주소
+	private String address;// 7.주소
+	private String address2;// 8.상세주소
+	private Date regdate;// 9.회원가입일
+	private Date updatedate;// 10.회원수정일
+
 	public MemberVO() {
 	}// 기본생성자 - 메서드 오버로딩을 하면 기본생성자 없어지기떄문(자동생성X) =>만들어줘야됨
 
@@ -120,10 +120,4 @@ public class MemberVO {
 				+ ", updatedate=" + updatedate + "]";
 	}
 
-	
-
-
-	
-	
-	
 }

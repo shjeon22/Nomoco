@@ -16,14 +16,11 @@ public class BoardServiceImpl implements BoardService {
 	@Inject
 	private BoardDAO dao;
 
-
 	@Override
 	public int getCount() throws Exception {
 		return dao.count();
 	}
-	
-	
-	
+
 	@Override
 	public void boardCreate(BoardVO vo) throws Exception {
 		dao.create(vo);
@@ -35,13 +32,10 @@ public class BoardServiceImpl implements BoardService {
 		return boardList;
 	}
 
-	
 	@Override
 	public List<BoardVO> getPage(Map<String, Integer> map) throws Exception {
 		return dao.selectPage(map);
 	}
-
-	
 
 	@Override
 	public BoardVO readBoard(Integer bno) throws Exception {
@@ -56,9 +50,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	  public int remove(Integer bno, String writer) throws Exception {
-        return dao.delete(bno, writer);
+	public int remove(Integer bno, String writer) throws Exception {
+		return dao.delete(bno, writer);
 	}
-
 
 }

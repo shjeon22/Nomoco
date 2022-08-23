@@ -17,16 +17,15 @@ import com.nmc.service.CovidService;
 @RequestMapping("/covidREST/*")
 public class CovidRESTController {
 
+	private static final Logger log = LoggerFactory.getLogger(CovidRESTController.class);
 
-private static final Logger log = LoggerFactory.getLogger(CovidRESTController.class);
+	@Inject
+	private CovidService service;
 
-@Inject
-private CovidService service;
-
-/*PostMapping("/info")
-public List covidInfoPOST(Model model)throws Exception{
-	log.info("발생현황 infoPOST() 크롤링 정보 호출");
-	
-	return service.getCovidInfo();
-}*/
+	/*
+	 * PostMapping("/info") public List covidInfoPOST(Model model)throws Exception{
+	 * log.info("발생현황 infoPOST() 크롤링 정보 호출");
+	 * 
+	 * return service.getCovidInfo(); }
+	 */
 }

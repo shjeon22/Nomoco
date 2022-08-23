@@ -29,8 +29,8 @@ public interface BoardDAO {
 
 	// 글삭제
 	public int delete(Integer bno, String writer) throws Exception;
-	
-	//댓글 조회수증가
-	int updateCommentCnt(Integer bno,int cnt) throws Exception;
+
+	// 댓글 조회수증가
+	public int updateCommentCnt(Integer bno, int cnt) throws Exception;
 
 }

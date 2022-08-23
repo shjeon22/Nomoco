@@ -26,7 +26,7 @@ public class CovidController {
 	// http://localhost:8088/covid/info
 	@GetMapping("/info")
 	public String covidInfoGET(Model model) throws Exception {
-		
+
 		// 상세정보를 크롤링하여 저장함
 		JSONArray CovidInfo = service.getCovidInfo();
 		JSONArray CovidInfo2 = service.getCovidInfo2();
@@ -37,13 +37,12 @@ public class CovidController {
 		return "/covid/info";
 
 	}
+
 	// http://localhost:8088/covid/info2
 	@GetMapping("/info2")
 	public String covidInfo2GET() throws Exception {
-		
-		
 		return "/covid/info2";
-		
+
 	}
 
 }

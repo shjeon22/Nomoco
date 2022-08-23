@@ -67,23 +67,20 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public int idchk(String id) throws Exception {
-		int result = sqlSession.selectOne(NAMESPACE+".idChk", id);
+		int result = sqlSession.selectOne(NAMESPACE + ".idChk", id);
 		return result;
 	}
 
 	@Override
 	public int telChk(String tel) throws Exception {
-		int result = sqlSession.selectOne(NAMESPACE+".telChk",tel);
+		int result = sqlSession.selectOne(NAMESPACE + ".telChk", tel);
 		return result;
 	}
 
 	@Override
 	public int emailChk(String email) throws Exception {
-		int result = sqlSession.selectOne(NAMESPACE+".emailChk", email);
+		int result = sqlSession.selectOne(NAMESPACE + ".emailChk", email);
 		return result;
 	}
-
-
-
 
 }

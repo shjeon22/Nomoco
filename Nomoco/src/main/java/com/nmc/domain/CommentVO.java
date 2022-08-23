@@ -5,13 +5,13 @@ import java.util.Objects;
 
 public class CommentVO {
 
-	private Integer cno;//      1.댓글번호
-	private Integer bno;//      2.게시물번호
-	private Integer pcno;//     3.대댓글(parent cno)
-	private String comment;//   4.댓글
+	private Integer cno;// 1.댓글번호
+	private Integer bno;// 2.게시물번호
+	private Integer pcno;// 3.대댓글(parent cno)
+	private String comment;// 4.댓글
 	private String commenter;// 5.작성자
-	private Date reg_date;//    6.등록일
-	private Date up_date;//     7.수정일
+	private Date reg_date;// 6.등록일
+	private Date up_date;// 7.수정일
 
 	public CommentVO() {
 	}
