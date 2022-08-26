@@ -1,5 +1,7 @@
 package com.nmc.web;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -91,33 +93,54 @@ public class BoardController {
 
 		// ip생성 IPv6( 0.0.0.0.0.1 ) => IPv4 ( 127.0.0.1 ) 형식으로
 		// RUN-configurations-Arguments 에 -Djava.net.preferIPv4Stack=true 추가
-		String ip = request.getHeader("X-Forwarded-For");
-
-		log.info(">>>> X-FORWARDED-FOR : " + ip);
-
-		if (ip == null) {
-			ip = request.getHeader("Proxy-Client-IP");
-			log.info(">>>> Proxy-Client-IP : " + ip);
-		}
-		if (ip == null) {
-			ip = request.getHeader("WL-Proxy-Client-IP");
-			log.info(">>>> WL-Proxy-Client-IP : " + ip);
-		}
-		if (ip == null) {
-			ip = request.getHeader("HTTP_CLIENT_IP");
-			log.info(">>>> HTTP_CLIENT_IP : " + ip);
-		}
-		if (ip == null) {
-			ip = request.getHeader("HTTP_X_FORWARDED_FOR");
-			log.info(">>>> HTTP_X_FORWARDED_FOR : " + ip);
-		}
-		if (ip == null) {
-			ip = request.getRemoteAddr();
-		}
-
-		log.info(">>>> Result : IP Address : " + ip);
-
-		model.addAttribute("ip", ip);
+//		String ip = request.getHeader("X-Forwarded-For");
+//
+//		log.info(">>>> X-FORWARDED-FOR : " + ip);
+//
+//		if (ip == null) {
+//			ip = request.getHeader("Proxy-Client-IP");
+//			log.info(">>>> Proxy-Client-IP : " + ip);
+//		}
+//		if (ip == null) {
+//			ip = request.getHeader("WL-Proxy-Client-IP");
+//			log.info(">>>> WL-Proxy-Client-IP : " + ip);
+//		}
+//		if (ip == null) {
+//			ip = request.getHeader("HTTP_CLIENT_IP");
+//			log.info(">>>> HTTP_CLIENT_IP : " + ip);
+//		}
+//		if (ip == null) {
+//			ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+//			log.info(">>>> HTTP_X_FORWARDED_FOR : " + ip);
+//		}
+//		if (ip == null) {
+//			ip = request.getRemoteAddr();
+//		}
+//		log.info(">>>> Result : IP Address : " + ip);
+		
+		// 루프백 주소->ipV4(내부주소)로 변환
+		String ipAddress = request.getHeader("x-forwarded-for");
+	    if(ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
+	        ipAddress = request.getHeader("Proxy-Client-IP");
+	    }
+	    if(ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
+	        ipAddress = request.getHeader("WL-Proxy-Client-IP");
+	    }
+	    if(ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
+	        ipAddress = request.getRemoteAddr();
+	        if(ipAddress.equals("127.0.0.1") || ipAddress.equals("0:0:0:0:0:0:0:1")) {
+	            //          IPv4             ||                    IPv6
+	            InetAddress inet = null;
+	            try {
+	                inet = InetAddress.getLocalHost();
+	            } catch (UnknownHostException e) {
+	                e.printStackTrace();
+	            }
+	            ipAddress = inet.getHostAddress();
+	        }
+	    }
+	    log.info(">>>> Result : IP Address : " + ipAddress);
+		model.addAttribute("ip", ipAddress);
 
 	}
 
