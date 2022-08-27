@@ -117,31 +117,35 @@ public class BoardController {
 //			ip = request.getRemoteAddr();
 //		}
 //		log.info(">>>> Result : IP Address : " + ip);
-		
+
 		// 루프백 주소->ipV4(내부주소)로 변환
 		String ipAddress = request.getHeader("x-forwarded-for");
-	    if(ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
-	        ipAddress = request.getHeader("Proxy-Client-IP");
-	    }
-	    if(ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
-	        ipAddress = request.getHeader("WL-Proxy-Client-IP");
-	    }
-	    if(ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
-	        ipAddress = request.getRemoteAddr();
-	        if(ipAddress.equals("127.0.0.1") || ipAddress.equals("0:0:0:0:0:0:0:1")) {
-	            //          IPv4             ||                    IPv6
-	            InetAddress inet = null;
-	            try {
-	                inet = InetAddress.getLocalHost();
-	            } catch (UnknownHostException e) {
-	                e.printStackTrace();
-	            }
-	            ipAddress = inet.getHostAddress();
-	        }
-	    }
-	    log.info(">>>> Result : IP Address : " + ipAddress);
+		if (ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
+			ipAddress = request.getHeader("Proxy-Client-IP");
+		}
+		if (ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
+			ipAddress = request.getHeader("WL-Proxy-Client-IP");
+		}
+		if (ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
+			ipAddress = request.getRemoteAddr();
+			if (ipAddress.equals("127.0.0.1") || ipAddress.equals("0:0:0:0:0:0:0:1")) {
+				// IP
+				InetAddress inet = null;
+				try {
+					inet = InetAddress.getLocalHost();
+				} catch (UnknownHostException e) {
+					e.printStackTrace();
+				}
+				ipAddress = inet.getHostAddress();
+			}
+		}
+		// ， IP IP, IP ','
+		if (ipAddress != null && ipAddress.length() > 15) { // "***.***.***.***".length() = 15
+			if (ipAddress.indexOf(",") > 0) {
+				ipAddress = ipAddress.substring(0, ipAddress.indexOf(","));
+			}
+		}
 		model.addAttribute("ip", ipAddress);
-
 	}
 
 	// 글쓰기

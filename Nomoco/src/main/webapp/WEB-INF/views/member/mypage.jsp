@@ -45,7 +45,6 @@
 	</div>
 	<form action="/member/mypage" method="post">
 		<div class="row">
-
 			<div class="col-md-6 col-lg-3 pb-5">
 				<a href="/member/info">
 					<div class="h-100 py-5 services-icon-wap shadow"
@@ -55,9 +54,12 @@
 						</div>
 						<h2 class="h5 mt-4 text-center">회원정보 조회</h2>
 					</div>
+				</a>
 			</div>
 			</a>
-
+			
+			
+			
 			<div class="col-md-6 col-lg-3 pb-5">
 				<a href="/member/update">
 					<div class="h-100 py-5 services-icon-wap shadow"

@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/member/member.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/member.css">
 </head>
 
 <body>

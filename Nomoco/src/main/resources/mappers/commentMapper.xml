@@ -11,14 +11,14 @@
 
 	<insert id="insert" parameterType="CommentVO">
 		INSERT INTO comment
-		(bno, pcno, comment, commenter, reg_date, up_date)
+		(bno, pcno, comment, commenter, re_ip, reg_date, up_date)
 		VALUES
-		(#{bno}, #{pcno}, #{comment}, #{commenter}, now(), now())
+		(#{bno}, #{pcno}, #{comment}, #{commenter},#{re_ip}, now(), now())
 	</insert>
 
 	<select id="selectAll" parameterType="int"
 		resultType="CommentVO">
-		SELECT cno, bno, ifnull(pcno,cno) as pcno, comment, commenter, reg_date, up_date
+		SELECT cno, bno, ifnull(pcno,cno) as pcno, comment, commenter, re_ip, reg_date, up_date
 		FROM comment
 		WHERE bno = #{bno}
 		ORDER BY pcno ASC, cno ASC
@@ -26,7 +26,7 @@
 
 	<select id="select" parameterType="int" resultType="CommentVO">
 		SELECT cno,
-		bno, pcno, comment, commenter, reg_date, up_date
+		bno, pcno, comment, commenter, reg_date, up_date,re_ip
 		FROM comment
 		WHERE cno
 		= #{cno}

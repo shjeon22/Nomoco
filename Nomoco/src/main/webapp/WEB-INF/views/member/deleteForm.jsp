@@ -8,6 +8,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/member/member.css">
 </head>
+
 <body>
 	<%
 	// 로그인 처리 -> 로그인 x (로그인페이지 이동)

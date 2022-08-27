@@ -1,6 +1,7 @@
 package com.nmc.domain;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.Objects;
 
 public class CommentVO {
@@ -12,15 +13,17 @@ public class CommentVO {
 	private String commenter;// 5.작성자
 	private Date reg_date;// 6.등록일
 	private Date up_date;// 7.수정일
+	private String re_ip;//8.ip
 
 	public CommentVO() {
 	}
 
-	public CommentVO(Integer bno, Integer pcno, String comment, String commenter) {
+	public CommentVO(Integer bno, Integer pcno, String comment, String commenter,String re_ip) {
 		this.bno = bno;
 		this.pcno = pcno;
 		this.comment = comment;
 		this.commenter = commenter;
+		this.re_ip =re_ip;
 	}
 
 	@Override
@@ -37,6 +40,14 @@ public class CommentVO {
 	@Override
 	public int hashCode() {
 		return Objects.hash(cno, bno, pcno, comment, commenter);
+	}
+
+	public Integer getCno() {
+		return cno;
+	}
+
+	public void setCno(Integer cno) {
+		this.cno = cno;
 	}
 
 	public Integer getBno() {
@@ -87,17 +98,19 @@ public class CommentVO {
 		this.up_date = up_date;
 	}
 
-	public Integer getCno() {
-		return cno;
+	public String getRe_ip() {
+		return re_ip;
 	}
 
-	public void setCno(Integer cno) {
-		this.cno = cno;
+	public void setRe_ip(String re_ip) {
+		this.re_ip = re_ip;
 	}
 
 	@Override
 	public String toString() {
-		return "CommentVO{" + "cno=" + cno + ", bno=" + bno + ", pcno=" + pcno + ", comment='" + comment + '\''
-				+ ", commenter='" + commenter + '\'' + ", reg_date=" + reg_date + ", up_date=" + up_date + '}';
+		return "CommentVO [cno=" + cno + ", bno=" + bno + ", pcno=" + pcno + ", comment=" + comment + ", commenter="
+				+ commenter + ", reg_date=" + reg_date + ", up_date=" + up_date + ", re_ip=" + re_ip + "]";
 	}
+	
+	
 }

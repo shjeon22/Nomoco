@@ -138,7 +138,7 @@
 		<div class="row">
 			<div class="col-12 col-md-4 mb-4">
 				<div class="card h-100">
-					<a href="shop-single.html"> <img
+					<a href="javascript:void(0)"> <img
 						src="${pageContext.request.contextPath }/resources/img/mask0.jpg"
 						class="card-img-top" alt="...">
 					</a>
@@ -151,7 +151,7 @@
 								class="text-warning fa fa-star"></i></li>
 							<li class="text-muted text-right"></li>
 						</ul>
-						<a href="shop-single.html"
+						<a href="javascript:void(0)"
 							class="h2 text-decoration-none text-dark">마스크</a>
 						<p class="card-text">코로나를 손쉽게 예방할 수 있는 필수 현대인의 필수품 입니다.</p>
 						<p class="text-muted">
@@ -162,7 +162,7 @@
 			</div>
 			<div class="col-12 col-md-4 mb-4">
 				<div class="card h-100">
-					<a href="shop-single.html"> <img
+					<a href="javascript:void(0)"> <img
 						src="${pageContext.request.contextPath }/resources/img/mask1.jpg"
 						class="card-img-top" alt="...">
 					</a>
@@ -175,7 +175,7 @@
 								class="text-muted text-right"></i></li>
 							<li class="text-muted text-right"></li>
 						</ul>
-						<a href="shop-single.html"
+						<a href="javascript:void(0)"
 							class="h2 text-decoration-none text-dark">손 소독제</a>
 						<p class="card-text">어디든지 손쉽게 들고다녀 사용하시면 코로나 전파위험을 낮춰줍니다.</p>
 						<p class="text-muted"></p>
@@ -184,7 +184,7 @@
 			</div>
 			<div class="col-12 col-md-4 mb-4">
 				<div class="card h-100">
-					<a href="shop-single.html"> <img
+					<a href="javascript:void(0)"> <img
 						src="${pageContext.request.contextPath }/resources/img/mask2.jpg"
 						class="card-img-top" alt="...">
 					</a>
@@ -197,7 +197,7 @@
 								class="text-muted fa fa-star"></i></li>
 							<li class="text-muted text-right"></li>
 						</ul>
-						<a href="shop-single.html"
+						<a href="javascript:void(0)"
 							class="h2 text-decoration-none text-dark">체온계</a>
 						<p class="card-text">열이나 두통 등의 증상이 생기면 사용하시어 37도이상이면 진료소에
 							방문바랍니다.</p>

@@ -167,7 +167,7 @@
 		</tr>
 
 	</table>
-
+<span style="color: red"> 코로나 관련 데이터에 대한 저작권 <br>Copyright ⓒ By MOHW. All Rights Reserved.<BR> http://ncov.mohw.go.kr 에 있습니다.</span>
 
 
 </div>
