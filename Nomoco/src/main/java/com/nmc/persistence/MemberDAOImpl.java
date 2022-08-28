@@ -83,4 +83,10 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;
 	}
 
+	@Override
+	public int delChk(MemberVO vo) throws Exception {
+		int result =sqlSession.selectOne(NAMESPACE+".delChk", vo);
+		return result;
+	}
+
 }

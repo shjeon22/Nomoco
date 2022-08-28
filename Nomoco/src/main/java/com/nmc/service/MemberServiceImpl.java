@@ -78,4 +78,10 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public int delChk(MemberVO vo) throws Exception {
+		int result =dao.delChk(vo);
+		return result;
+	}
+
 }

@@ -18,6 +18,9 @@ public interface MemberService {
 
 	// 회원정보 삭제
 	public void deleteMember(MemberVO vo) throws Exception;
+	
+	//회원탈퇴 체크
+	public int delChk(MemberVO vo) throws Exception;
 
 	// id중복체크
 	public int idChk(String id) throws Exception;

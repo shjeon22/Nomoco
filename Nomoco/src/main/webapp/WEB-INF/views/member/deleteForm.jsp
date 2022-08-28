@@ -14,7 +14,7 @@
 	// 로그인 처리 -> 로그인 x (로그인페이지 이동)
 	String id = (String) session.getAttribute("id");
 	if (id == null) {
-		response.sendRedirect("/test/member/login");
+		response.sendRedirect("/test/member/index");
 	}
 	%>
 	<!-- Modal -->

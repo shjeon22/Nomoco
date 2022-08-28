@@ -38,7 +38,7 @@ public class CommentRESTController {
 
 	// 댓글 등록
 	// /comments?bno=100 POST
-	// http://localhost:8088/board/comments?bno=1085
+	// http://localhost:8088/board/comments?bno=345
 	@PostMapping("/comments")
 	public ResponseEntity<String> writePOST(@RequestBody CommentVO vo, Integer bno, HttpSession session,
 			HttpServletRequest request, Model model) {

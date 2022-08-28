@@ -211,5 +211,19 @@
 	</div>
 </section>
 <!-- End Featured Product -->
+<script>
+	var result = '${result}';
+
+	if (result == "DELOK") {
+		alert(" 회원탈퇴 되었습니다. ");
+	}
+	if (result == "DELNOT") {
+		alert(" 회원탈퇴 실패(비밀번호 오류). ");
+	}
+	if (result == "LOGNOT") {
+		alert(" 로그인 실패(회원정보를 확인해주세요.) ");
+	}
+</script>
+
 
 <jsp:include page="./include/footer.jsp" />

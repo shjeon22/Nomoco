@@ -86,7 +86,7 @@ public class MemberController { // 순서 : 컨트롤러 -> 서비스 호출 -> 
 	}
 
 	@PostMapping("/login")
-	public String loginPOST(MemberVO vo, HttpSession session) throws Exception {
+	public String loginPOST(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
 		log.info("loginPOST() 호출");
 		log.info(vo + "");
 		// DB 동작 호출을 위해서 서비스 동작을 호출 - loginCheck()
@@ -94,7 +94,8 @@ public class MemberController { // 순서 : 컨트롤러 -> 서비스 호출 -> 
 
 		if (resultVO == null) {
 			log.info("로그인 실패! (로그인 페이지로 이동)");
-			return "redirect:/member/login";
+			rttr.addFlashAttribute("result", "LOGNOT");
+			return "redirect:/member/index";
 		}
 		session.setAttribute("id", resultVO.getId());
 		return "redirect:/index";
@@ -192,9 +193,14 @@ public class MemberController { // 순서 : 컨트롤러 -> 서비스 호출 -> 
 		log.info("deletePOST() 호출");
 
 		log.info("삭제정보" + vo);
+		int cnt =service.delChk(vo);
+		if(cnt != 1) {
+			rttr.addFlashAttribute("result", "DELNOT");
+		}
 		service.deleteMember(vo);
 		session.invalidate();
-		rttr.addFlashAttribute("result", "DELOK");
+		if(cnt ==1) {rttr.addFlashAttribute("result", "DELOK");}
+		
 		return "redirect:/member/index";
 	}
 

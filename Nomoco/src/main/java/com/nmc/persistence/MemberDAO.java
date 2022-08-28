@@ -18,6 +18,9 @@ public interface MemberDAO {
 
 	// 회원탈퇴
 	public void deleteMember(MemberVO dvo) throws Exception;
+	
+	//회원탈퇴 체크
+	public int delChk(MemberVO vo) throws Exception;
 
 	// id중복체크
 	public int idchk(String id) throws Exception;
@@ -27,5 +30,7 @@ public interface MemberDAO {
 
 	// email중복체크
 	public int emailChk(String email) throws Exception;
+	
+	
 
 }

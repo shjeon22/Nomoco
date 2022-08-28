@@ -190,7 +190,7 @@
 				let comment = $("input[name=comment]").val();
 
 				if (comment.trim() == '') {
-					alert("댓글을 입력하세요");
+					alert("수정할 댓글의 변경버튼을 클릭 해주세요!!!");
 					$("input[name=comment]").focus()
 					return;
 				}
@@ -312,7 +312,7 @@
 						tmp += '<span class="commenter">'+ comment.commenter +'</span>'
 						if(comment.re_ip !=null){
 						tmp += '<span class="re_ip">'+comment.re_ip +'</span>'}
-						tmp += '<br>'+' 내용:<span class="comment">'
+						tmp += '<br>'+' <span class="comment">'
 								+ comment.comment + '</span>'
 						tmp +=  '<br>'+comment.up_date
 						tmp +=  '&nbsp;'+'<button class="delBtn" style="background-color: red">삭제</button>'
