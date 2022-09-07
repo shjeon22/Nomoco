@@ -38,7 +38,7 @@
   <summary>메인 화면</summary>
   <br />
   <div markdown="1">
-    <image src="https://github.com/junkahyun/KHFinalProject/blob/master/screenimage/roomRuels_check.PNG" />
+    <image src="https://user-images.githubusercontent.com/107968231/188764856-79f5ade4-00bb-4c36-824b-9622e163e981.png" />
   </div>
 </details>
 <details>
