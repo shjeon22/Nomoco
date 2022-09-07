@@ -27,7 +27,7 @@
 **기술 스택**
 
 - Java (jdk 1.8.0)
-- spring Framework 
+- spring Framework (4.9)
 - MySQL DB (8.0.29)
 - javascript
 - jQuery
