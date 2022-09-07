@@ -60,27 +60,29 @@
   <summary>마이페이지</summary>
   <br />
   <div markdown="1">
-    <image src="" />
+    <image src="https://user-images.githubusercontent.com/107968231/188765380-9ad8b41c-82bc-4490-8066-d975a8586e2c.png" />
   </div>
 </details>
 <details>
   <summary>게시판</summary>
   <br />
   <div markdown="1">
-    <image src="" />
+    <image src="https://user-images.githubusercontent.com/107968231/188765651-89454a3a-dd57-456b-b679-8a08761c57a8.png" />
+    <image src="https://user-images.githubusercontent.com/107968231/188765800-db306fb6-ca54-4309-86f3-ea84285a6b7c.png" />
+    <image src="https://user-images.githubusercontent.com/107968231/188765954-fb57e667-64b8-42aa-822b-c2d9abe6c12e.png" />
   </div>
 </details>
 <details>
   <summary>코로나 현황 크롤링 화면</summary>
   <br />
   <div markdown="1">
-    <image src="" />
+    <image src=https://user-images.githubusercontent.com/107968231/188766065-70cca0ef-f37b-4d2c-a559-4fdd4fc3e90b.png"" />
   </div>
 </details>
 <details>
   <summary>선별진료소 위치정보(Kakao Map API) 화면</summary>
   <br />
   <div markdown="1">
-    <image src="" />
+    <image src="https://user-images.githubusercontent.com/107968231/188766222-14edada8-e171-418e-9295-39483ef2d349.png" />
   </div>
 </details>
