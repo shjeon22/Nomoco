@@ -45,41 +45,42 @@
   <summary>로그인 화면</summary>
   <br />
   <div markdown="1">
-    <image src="https://github.com/junkahyun/KHFinalProject/blob/master/screenimage/people_check.PNG" />
+    <image src="https://user-images.githubusercontent.com/107968231/188765140-0033d732-d229-4e12-b939-d63699995664.png" />
   </div>
 </details>
 <details>
   <summary>회원가입 화면</summary>
   <br />
   <div markdown="1">
-    <image src="https://github.com/junkahyun/KHFinalProject/blob/master/screenimage/reserve_check.PNG" />
+    <image src="https://user-images.githubusercontent.com/107968231/188765253-3361674b-ff11-42c6-b0d6-2cab89807b10.png" />
+     <image src="https://user-images.githubusercontent.com/107968231/188765269-16861461-c17e-4b1d-9ec8-3637016d3985.png" />
   </div>
 </details>
 <details>
   <summary>마이페이지</summary>
   <br />
   <div markdown="1">
-    <image src="https://github.com/junkahyun/KHFinalProject/blob/master/screenimage/coupon_use.PNG" />
+    <image src="" />
   </div>
 </details>
 <details>
   <summary>게시판</summary>
   <br />
   <div markdown="1">
-    <image src="https://github.com/junkahyun/KHFinalProject/blob/master/screenimage/reserve_popup.PNG" />
+    <image src="" />
   </div>
 </details>
 <details>
   <summary>코로나 현황 크롤링 화면</summary>
   <br />
   <div markdown="1">
-    <image src="https://github.com/junkahyun/KHFinalProject/blob/master/screenimage/reserve_succes.PNG" />
+    <image src="" />
   </div>
 </details>
 <details>
   <summary>선별진료소 위치정보(Kakao Map API) 화면</summary>
   <br />
   <div markdown="1">
-    <image src="https://github.com/junkahyun/KHFinalProject/blob/master/screenimage/reserve_email.PNG" />
+    <image src="" />
   </div>
 </details>
